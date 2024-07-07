@@ -1,8 +1,10 @@
+import PageLayout from "../../components/layouts/PageLayout";
+
 const LeaderboardPage = () => {
     return (
-        <section className='w-full h-screen bg-main-white flex items-center justify-center pb-20'>
+        <PageLayout>
             LeaderboardPage
-        </section>
+        </PageLayout>
     );
 };
 

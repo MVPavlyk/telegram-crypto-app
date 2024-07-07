@@ -8,6 +8,7 @@ import WebApp from '@twa-dev/sdk'
 import HomePage from './pages/Home';
 import LeaderboardPage from './pages/Leaderboard';
 import BASE_ROUTE, {ROUTES} from "./config/routes";
+import UserPage from "./pages/User";
 
 WebApp.ready();
 
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: ROUTES.LEADERBOARD,
                 element: <LeaderboardPage/>,
+            },
+            {
+                path: ROUTES.USER,
+                element: <UserPage/>,
             },
         ],
     },

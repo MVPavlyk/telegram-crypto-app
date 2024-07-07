@@ -6,6 +6,7 @@ const NavBar = () => {
         <div className='h-20 fixed bottom-0 w-full flex items-center bg-main-blue text-white px-8 justify-between'>
             <Link to={ROUTES.HOME}>Home</Link>
             <Link to={ROUTES.LEADERBOARD}>Leaderboard</Link>
+            <Link to={ROUTES.USER}>User</Link>
         </div>
     );
 };
