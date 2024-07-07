@@ -8,5 +8,5 @@ export default defineConfig({
   build: {
     outDir: './docs'
   },
-  base: '/telegram-crypto-app/'
+  base: '/telegram-crypto-app'
 });
