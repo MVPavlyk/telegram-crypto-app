@@ -28,7 +28,7 @@ function App() {
           count is {count}
         </button>
       </div>
-      {JSON.stringify(WebApp.WebAppUser)}
+      {JSON.stringify(WebApp)}
       <div className="card">
         <button onClick={() => WebApp.showAlert(`Hello World! Current count is ${count}`)}>
             Show Alert
