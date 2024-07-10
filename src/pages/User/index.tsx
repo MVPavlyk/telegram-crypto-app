@@ -3,7 +3,7 @@ import WebApp from '@twa-dev/sdk'
 
 const UserPage = () => {
     // @ts-ignore
-    const {first_name, last_name} = WebApp?.initDataUnsafe?.user || {}
+    const {first_name, last_name, id} = WebApp?.initDataUnsafe?.user || {}
 
     console.log(WebApp)
 

@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.page-layout {
+    background: url("./assets/main-bg.svg") center top / cover no-repeat;
+}
+
+.main-page-bg {
+    background: url("./assets/home-bg.svg") center bottom / cover no-repeat;
+    transform: scale(2.4);
+}
