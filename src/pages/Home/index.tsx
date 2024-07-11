@@ -83,7 +83,8 @@ const HomePage = () => {
                 </div>
             </div>
 
-            <div className='absolute z-[4] w-screen px-[35px] h-1/2 bottom-0 flex flex-col items-center pt-5'>
+            <div
+                className='absolute z-[4] w-screen px-[35px] min-h-[calc(50%-88px)] bottom-[88px] flex flex-col items-center pt-5'>
                 {LogoAnimation}
                 {!isLoadAnimationEnd && <Lottie style={{marginTop: 20}} {...progressOptions} />}
                 {isLoadAnimationEnd &&
