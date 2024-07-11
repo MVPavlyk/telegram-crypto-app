@@ -7,6 +7,15 @@
 }
 
 .main-page-bg {
-    background: url("./assets/home-bg.svg") center bottom / cover no-repeat;
+    background-image: url("./assets/home-bg.svg");
+
+    /* Full height */
+    width: 100vw;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
     transform: scale(2.4);
 }
