@@ -4,10 +4,9 @@
 
 body {
     font-family: "Changa", sans-serif;
-}
 
-.page-layout {
-    background: url("./assets/main-bg.svg") center top / cover no-repeat;
+    background: url("./assets/main-bg.svg") center / cover;
+
 }
 
 .default-btn {
@@ -19,6 +18,12 @@ body {
     border-radius: 12px;
     cursor: pointer;
     color: white;
+}
+.max-height-80vh{
+    max-height: 75vh;
+}
+.main-blue-btn {
+    background: #2F3061;
 }
 
 .mirror {
