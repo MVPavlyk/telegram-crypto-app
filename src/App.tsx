@@ -1,14 +1,24 @@
 import {Outlet} from "react-router-dom";
 
-import WebApp from '@twa-dev/sdk'
-function App() {
+import React, {createContext, useState} from "react";
 
-    console.log(WebApp);
+type TPageContext = {
+    isLoadAnimationEnd: boolean,
+    setIsLoadAnimationEnd: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const PageLoadContext = createContext<TPageContext | null>(null);
+
+function App() {
+    const [isLoadAnimationEnd, setIsLoadAnimationEnd] = useState(false)
 
     return (
-        <section>
-            <Outlet/>
-        </section>
+        <PageLoadContext.Provider value={{isLoadAnimationEnd, setIsLoadAnimationEnd}}>
+            <section>
+                <Outlet/>
+            </section>
+        </PageLoadContext.Provider>
+
     )
 }
 
