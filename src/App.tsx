@@ -1,4 +1,4 @@
-import {Outlet} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import React, {createContext, useState} from "react";
 
@@ -22,4 +22,4 @@ function App() {
     )
 }
 
-export default App
+export default App;

@@ -1,31 +1,67 @@
+import axios from "axios";
 import PageLayout from "../../components/layouts/PageLayout";
-import {useState} from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import LeaderboardUserList from "./leaderboard-list.component";
+import LeaderBoardHeader from "./leaderboard-header.component";
+import { userLeaderBoardInterface } from "../../libs/user/interfaces";
 
-const LeaderboardPage = () => {
-    const [selectedList, setSelectedList] = useState<'1vs9' | '1vs1'>('1vs9')
+const LeaderboardPage: React.FC = () => {
+  const [list, setList] = useState<userLeaderBoardInterface[]>([]);
+  const [listOptions, setListOptions] = useState(false);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
-    const topButtons: ('1vs9' | '1vs1')[] = ['1vs9', '1vs1']
+  const observer = useRef<IntersectionObserver | null>(null);
 
-    return (
-        <PageLayout>
-            <div className='h-full max-h-full w-full pb-[90px] px-5 pt-[30px]'>
-                <div className='grid items-center grid-cols-2 w-full gap-2.5'>
-                    {topButtons.map((type) =>
-                        <button
-                            onClick={() => setSelectedList(type)}
-                            style={{background: type !== selectedList ? '#1F2135' : ''}}
-                            className='default-btn h-[50px] text-2xl font-semibold'
-                        >
-                            {type}
-                        </button>
-                    )}
-                </div>
-                <div className='h-[calc(100%-50px)] bg-white pt-[30px] pb-5'>
-
-                </div>
-            </div>
-        </PageLayout>
+  const loadMorePosts = useCallback(async () => {
+    console.log('More Pages')
+    setLoading(true);
+    const limit = 50;
+    const offset = (page - 1) * limit;
+    // change url to backend api
+    const base = 'https://wk6kk7s8-300.euw.devtunnels.ms';
+    const res = await axios.get(
+      `${base}?limit=${limit}&offset=${offset}`
     );
+    setList((prevList) => [...prevList, ...res.data]);
+    setLoading(false);
+  }, [page]);
+
+  useEffect(() => {
+      loadMorePosts();
+  }, [loadMorePosts]);
+  
+
+  const lastUserElementRef = useCallback(
+    (node: HTMLDivElement | null) => {
+        if (loading) return;
+        if (observer.current) observer.current.disconnect();
+    
+        observer.current = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) {
+            setPage((prevPage) => prevPage + 1);
+          }
+        });
+    
+        if (node) observer.current.observe(node);
+      },
+      [loading]
+  );
+
+  return (
+    <PageLayout showNavigation={true}>
+      <div className="w-full h-screen max-h-screen relative">
+        <LeaderBoardHeader
+          listOptions={listOptions}
+          setListOptions={setListOptions}
+        />
+        <LeaderboardUserList
+          list={list}
+          lastUserElementRef={lastUserElementRef}
+        />
+      </div>
+    </PageLayout>
+  );
 };
 
 export default LeaderboardPage;
