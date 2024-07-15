@@ -25,15 +25,12 @@ const NavBar = () => {
             route: ROUTES.WALLET,
             Icon: WalletIcon,
         },
-
     ]
 
-
     return (
-        <div className='pt-2.5 pb-12 w-full z-[5] fixed bottom-0 px-[42px] flex items-center justify-between'>
-            {routes.map(({route, Icon}, index) => {
-                
-                return <Link to={route} key={route + index}><Icon isSelected={route === pathname}/></Link> }
+        <div className='pt-2.5 pb-12 w-full z-[5] absolute bottom-0 flex items-center justify-evenly'>
+            {routes.map(({route, Icon}) =>
+                <Link to={route}><Icon isSelected={route === pathname}/></Link>
             )}
         </div>
     );
