@@ -18,8 +18,10 @@ const LeaderboardPage: React.FC = () => {
     setLoading(true);
     const limit = 50;
     const offset = (page - 1) * limit;
+    // change url to backend api
+    const base = 'https://wk6kk7s8-300.euw.devtunnels.ms';
     const res = await axios.get(
-      `https://wk6kk7s8-300.euw.devtunnels.ms/leaderboard?limit=${limit}&offset=${offset}`
+      `${base}?limit=${limit}&offset=${offset}`
     );
     setList((prevList) => [...prevList, ...res.data]);
     setLoading(false);
