@@ -13,7 +13,7 @@
         const getUser = async () => {
         try {
             // change url to backend api
-            const base = 'https://wk6kk7s8-300.euw.devtunnels.ms';
+            const base = 'http://45.159.231.30/api';
             const response = await axios.get(
             `${base}${webAppUser.id}`
             );

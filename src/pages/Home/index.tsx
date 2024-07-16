@@ -71,10 +71,10 @@ const HomePage = () => {
                 {!isLoadAnimationEnd && <Lottie style={{marginTop: 20}} {...progressOptions} />}
                 {isLoadAnimationEnd &&
                     <div className='w-full flex flex-col items-center gap-y-4'>
-                        <button className='h-20 w-80 text-[30px] font-[600] default-btn'>
+                        <button className='h-20 max-w-[320px] w-full text-[30px] font-[600] default-btn'>
                             Start Game
                         </button>
-                        <p className='w-56 text-center text-xs text-[#4A4E64]'>
+                        <p className='w-56 text-center text-xs text-[#4A4E64] sm:mt-14 sm:text-lg sm:w-80'>
                             to join the game you need to have a few coins
                             at balance at press the button
                         </p>

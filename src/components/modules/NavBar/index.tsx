@@ -1,4 +1,4 @@
-import {Link, useLocation} from "react-router-dom";
+import { Link, matchPath, useLocation } from 'react-router-dom';
 import {ROUTES} from "../../../config/routes";
 import HomeIcon from "../../../assets/icons/Home";
 import LeaderboardIcon from "../../../assets/icons/Leaderboard";
@@ -30,7 +30,7 @@ const NavBar = () => {
     return (
         <div className='pt-2.5 pb-12 w-full z-[5] absolute bottom-0 flex items-center justify-evenly'>
             {routes.map(({route, Icon}) =>
-                <Link to={route}><Icon isSelected={route === pathname}/></Link>
+                <Link to={route}><Icon isSelected={!!matchPath(route, pathname)}/></Link>
             )}
         </div>
     );

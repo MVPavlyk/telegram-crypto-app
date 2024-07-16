@@ -19,7 +19,7 @@ const LeaderboardPage: React.FC = () => {
     const limit = 50;
     const offset = (page - 1) * limit;
     // change url to backend api
-    const base = 'https://wk6kk7s8-300.euw.devtunnels.ms';
+    const base = 'http://45.159.231.30/api';
     const res = await axios.get(
       `${base}?limit=${limit}&offset=${offset}`
     );
@@ -50,7 +50,7 @@ const LeaderboardPage: React.FC = () => {
 
   return (
     <PageLayout showNavigation={true}>
-      <div className="w-full h-screen max-h-screen relative">
+      <div className="w-full h-[calc(100vh-90px)] px-5 pt-[30px]">
         <LeaderBoardHeader
           listOptions={listOptions}
           setListOptions={setListOptions}

@@ -1,5 +1,5 @@
-const BlueBtn = "default-btn main-blue-btn p-5 w-full";
-const RedBtn = "default-btn p-5 w-full";
+const BlueBtn = "default-btn text-2xl h-[50px] font-semibold main-blue-btn w-full";
+const RedBtn = "default-btn text-2xl h-[50px] font-semibold w-full";
 
 interface LeaderBoardHeaderProps {
   listOptions: boolean;
@@ -11,21 +11,19 @@ const LeaderBoardHeader = ({
   setListOptions,
 }: LeaderBoardHeaderProps) => {
   return (
-    <div className="w-full relative items-center">
-    <div className="w-full flex items-center justify-evenly fixed top-8 left-0 px-10 gap-5">
+    <div className="w-full flex items-center gap-2.5">
       <button
         className={!listOptions ? RedBtn : BlueBtn}
         onClick={() => setListOptions(false)}
       >
-        1 VS 9
+        1vs9
       </button>
       <button
         className={listOptions ? RedBtn : BlueBtn}
         onClick={() => setListOptions(true)}
       >
-        1 VS 1
+        1vs1
       </button>
-    </div>
     </div>
   );
 };
