@@ -19,7 +19,7 @@ const LeaderboardPage: React.FC = () => {
     const limit = 50;
     const offset = (page - 1) * limit;
     // change url to backend api
-    const base = 'http://45.159.231.30/api';
+    const base = 'https://shtrssl.mooo.com/leaderboard';
     const res = await axios.get(`${base}?limit=${limit}&offset=${offset}`);
     setList((prevList) => [...prevList, ...res.data]);
     setLoading(false);

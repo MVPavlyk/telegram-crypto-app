@@ -6,7 +6,7 @@ import bgImage from '../../assets/home-bg.svg';
 import logoAnimation from '../../assets/animations/Ninja Logo.json';
 import progressAnimation from '../../assets/animations/Progress Bar.json';
 import eyeAnimation from '../../assets/animations/Full Eye Blink.json';
-import fullAnimation from '../../assets/animations/Rain and Ligthning.lottie';
+import fullAnimation from '../../assets/animations/Rain & Lightning.lottie';
 import { useContext, useEffect, useRef } from 'react';
 import { PageLoadContext } from '../../App.tsx';
 
