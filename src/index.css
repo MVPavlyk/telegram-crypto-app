@@ -3,43 +3,42 @@
 @tailwind utilities;
 
 body {
-    font-family: "Changa", sans-serif;
+  font-family: 'Changa', sans-serif;
 
-    background: url("./assets/main-bg.svg") center / cover;
-
+  background: url('./assets/main-bg.svg') center / cover;
 }
 
 .default-btn {
-    background: url("./assets/start-game-button-bg.png") center top / cover no-repeat;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    cursor: pointer;
-    color: white;
+  background: url('./assets/start-game-button-bg.png') center top / cover no-repeat;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  cursor: pointer;
+  color: white;
 }
-.max-height-80vh{
-    max-height: 75vh;
+.max-height-80vh {
+  max-height: 75vh;
 }
 .main-blue-btn {
-    background: #2F3061;
+  background: #2f3061;
 }
 
 .mirror {
-    transform: scale(-1, 1);
+  transform: scale(-1, 1);
 }
 
 .main-page-bg {
-    background-image: url("./assets/home-bg.svg");
+  background-image: url('./assets/home-bg.svg');
 
-    /* Full height */
-    width: 100vw;
+  /* Full height */
+  width: 100vw;
 
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
-    transform: scale(2.4);
+  transform: scale(2.4);
 }

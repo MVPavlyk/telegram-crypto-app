@@ -1,1 +1,1 @@
-export * from './user.leaderboard.interface'
+export * from './user.leaderboard.interface';
