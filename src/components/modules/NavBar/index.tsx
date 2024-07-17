@@ -30,7 +30,7 @@ const NavBar = () => {
   return (
     <div className='pt-2.5 pb-12 w-full z-[5] absolute bottom-0 flex items-center justify-evenly'>
       {routes.map(({ route, Icon }) => (
-        <Link to={route}>
+        <Link key={route} to={route}>
           <Icon isSelected={!!matchPath(route, pathname)} />
         </Link>
       ))}

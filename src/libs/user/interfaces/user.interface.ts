@@ -1,8 +1,14 @@
+import { TAvatar } from '../../../types/common.ts';
+
 export interface UserInterface {
   id: string;
-  username: string;
-  avatar: string;
+  avatar: TAvatar;
   rank: number;
   telegramUsername: string;
-  telegramId: string;
+  telegramId: number;
+}
+
+export interface UserPatchInterface {
+  username: string;
+  avatar: TAvatar;
 }

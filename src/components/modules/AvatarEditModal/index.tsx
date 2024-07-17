@@ -10,7 +10,7 @@ import { TAvatar } from '../../../types/common.ts';
 type AvatarEditModalProps = {
   defaultAvatar: TAvatar;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setAvatar: React.Dispatch<React.SetStateAction<TAvatar>>;
+  setAvatar: React.Dispatch<React.SetStateAction<TAvatar | undefined>>;
 };
 
 const colors: string[] = ['#3F56EB', '#E9F939', '#393939', '#A342EF', '#3EDC4E', '#FA9825', '#F32AAE', '#F72122'];

@@ -9,7 +9,7 @@ interface LeaderboardUserProps extends userLeaderBoardInterface {
 }
 
 const LeaderboardItem = forwardRef<HTMLDivElement, LeaderboardUserProps>(
-  ({ telegramUsername, sumWon, position }: LeaderboardUserProps, ref: ForwardedRef<HTMLDivElement>) => {
+  ({ telegramUsername, sumWon, position, avatar }: LeaderboardUserProps, ref: ForwardedRef<HTMLDivElement>) => {
     const isTop3 = position < 4;
     return (
       <div
@@ -18,7 +18,7 @@ const LeaderboardItem = forwardRef<HTMLDivElement, LeaderboardUserProps>(
       >
         <div className='flex gap-x-3 items-center'>
           <p className='text-white'>{position}</p>
-          <Avatar size={48} hood='#393939' eyes='#FA9825' />
+          <Avatar size={48} {...avatar} />
           <p className='text-white'>{telegramUsername}</p>
         </div>
         <div

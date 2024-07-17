@@ -1,9 +1,9 @@
-import axios from 'axios';
 import PageLayout from '../../components/layouts/PageLayout';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { userLeaderBoardInterface } from '../../libs/user/interfaces';
 import SwitchButtons from '../../components/units/SwitchButtons';
 import LeaderboardList from '../../components/modules/LeaderboardList';
+import { leaderboardServices } from '../../services/leaderboard.services.ts';
 
 const LeaderboardPage = () => {
   const [list, setList] = useState<userLeaderBoardInterface[]>([]);
@@ -24,9 +24,11 @@ const LeaderboardPage = () => {
     const limit = 50;
     const offset = (page - 1) * limit;
     // change url to backend api
-    const base = 'https://shtrssl.mooo.com/leaderboard';
-    const res = await axios.get(`${base}?limit=${limit}&offset=${offset}&mode=${gameType === '1vs9' ? '10' : '2'}`);
-    setList((prevList) => [...prevList, ...res.data]);
+
+    const res = await leaderboardServices.getList(
+      `limit=${limit}&offset=${offset}&mode=${gameType === '1vs9' ? '10' : '2'}`
+    );
+    setList((prevList) => [...prevList, ...res]);
     setLoading(false);
   }, [page, gameType]);
 

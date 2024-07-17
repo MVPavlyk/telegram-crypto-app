@@ -45,6 +45,7 @@ const HomePage = () => {
 
   return (
     <PageLayout showNavigation={isLoadAnimationEnd}>
+      {JSON.stringify(import.meta.env.REACT_APP_API_URL)}
       <div className='absolute z-[1] w-screen h-screen top-0 left-0 overflow-hidden'>
         <img src={bgImage} alt='bg-img' className='w-screen absolute bottom-0 md:bottom-auto md:-top-[27.7vw]' />
         <div className='absolute left-[9.48vw] bottom-[142.8vw] md:bottom-auto md:top-[25.7vw]'>{EyeAnimation1}</div>
@@ -72,7 +73,7 @@ const HomePage = () => {
         )}
       </div>
       {!isLoadAnimationEnd && (
-        <div className='w-screen px-10 text-center text-[#4A4E64] xs:text-xl absolute bottom-[50px] z-[4]'>
+        <div className='w-screen px-10 text-center text-[#4A4E64] text-sm xs:text-xl absolute bottom-5 xs:bottom-[50px] z-[4]'>
           Advice: If you are in room with 9 people always check your balance
         </div>
       )}
