@@ -60,7 +60,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-      <div className='absolute z-[4] w-screen px-[35px] min-h-[calc(50%-88px)] bottom-[88px] flex flex-col items-center pt-5'>
+      <div className='absolute z-[4] w-screen px-[35px] logo-wrapper min-h-[calc(50%-88px)] bottom-[88px] flex flex-col items-center pt-5'>
         {LogoAnimation}
         {!isLoadAnimationEnd && <Lottie style={{ marginTop: 20 }} {...progressOptions} />}
         {isLoadAnimationEnd && (
@@ -73,7 +73,7 @@ const HomePage = () => {
         )}
       </div>
       {!isLoadAnimationEnd && (
-        <div className='w-screen px-10 text-center text-[#4A4E64] text-sm xs:text-xl absolute bottom-5 xs:bottom-[50px] z-[4]'>
+        <div className='home-advice w-screen px-10 text-center text-[#4A4E64] text-sm xs:text-xl absolute bottom-5 xs:bottom-[50px] z-[4]'>
           Advice: If you are in room with 9 people always check your balance
         </div>
       )}
