@@ -8,6 +8,7 @@ import HomePage from './pages/Home';
 import LeaderboardPage from './pages/Leaderboard';
 import BASE_ROUTE, { ROUTES } from './config/routes';
 import UserPage from './pages/User';
+import WalletPage from './pages/Wallet';
 
 WebApp.ready();
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: ROUTES.USER,
         element: <UserPage />,
+      },
+      {
+        path: ROUTES.WALLET,
+        element: <WalletPage />,
       },
     ],
   },

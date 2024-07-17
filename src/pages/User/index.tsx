@@ -97,7 +97,7 @@ const UserPage = () => {
     <PageLayout>
       {!!user && !!leaderboardUserData && !!avatar && (
         <>
-          <div className='w-full h-[calc(100vh-90px)] px-5 pt-[30px] overflow-auto'>
+          <div className='w-full h-[calc(100vh-90px)] px-5 pt-[30px] overflow-auto no-scrollbar'>
             <div className='w-full flex items-center gap-x-4'>
               <button
                 onClick={() => setIsEditModelOpen(!isEditModalOpen)}
