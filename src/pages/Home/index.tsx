@@ -72,7 +72,7 @@ const HomePage = () => {
         )}
       </div>
       {!isLoadAnimationEnd && (
-        <div className='w-screen px-10 text-center text-[#4A4E64] text-xl absolute bottom-[50px] z-[4]'>
+        <div className='w-screen px-10 text-center text-[#4A4E64] xs:text-xl absolute bottom-[50px] z-[4]'>
           Advice: If you are in room with 9 people always check your balance
         </div>
       )}

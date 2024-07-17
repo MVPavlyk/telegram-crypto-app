@@ -1,17 +1,22 @@
 import axios from 'axios';
 import PageLayout from '../../components/layouts/PageLayout';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import LeaderboardUserList from './leaderboard-list.component';
-import LeaderBoardHeader from './leaderboard-header.component';
 import { userLeaderBoardInterface } from '../../libs/user/interfaces';
+import SwitchButtons from '../../components/units/SwitchButtons';
+import LeaderboardList from '../../components/modules/LeaderboardList';
 
-const LeaderboardPage: React.FC = () => {
+const LeaderboardPage = () => {
   const [list, setList] = useState<userLeaderBoardInterface[]>([]);
-  const [listOptions, setListOptions] = useState(false);
+  const [gameType, setGameType] = useState('1vs9');
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
   const observer = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    setPage(1);
+    setList([]);
+  }, [gameType]);
 
   const loadMorePosts = useCallback(async () => {
     console.log('More Pages');
@@ -20,10 +25,10 @@ const LeaderboardPage: React.FC = () => {
     const offset = (page - 1) * limit;
     // change url to backend api
     const base = 'https://shtrssl.mooo.com/leaderboard';
-    const res = await axios.get(`${base}?limit=${limit}&offset=${offset}`);
+    const res = await axios.get(`${base}?limit=${limit}&offset=${offset}&mode=${gameType === '1vs9' ? '10' : '2'}`);
     setList((prevList) => [...prevList, ...res.data]);
     setLoading(false);
-  }, [page]);
+  }, [page, gameType]);
 
   useEffect(() => {
     loadMorePosts();
@@ -48,8 +53,14 @@ const LeaderboardPage: React.FC = () => {
   return (
     <PageLayout showNavigation={true}>
       <div className='w-full h-[calc(100vh-90px)] px-5 pt-[30px]'>
-        <LeaderBoardHeader listOptions={listOptions} setListOptions={setListOptions} />
-        <LeaderboardUserList list={list} lastUserElementRef={lastUserElementRef} />
+        <SwitchButtons
+          selectedValue={gameType}
+          options={[
+            { value: '1vs9', setValue: setGameType },
+            { value: '1vs1', setValue: setGameType },
+          ]}
+        />{' '}
+        <LeaderboardList list={list} lastUserElementRef={lastUserElementRef} />
       </div>
     </PageLayout>
   );

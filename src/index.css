@@ -51,9 +51,8 @@ body {
   scrollbar-width: none;
 }
 
-
 .blur-modal-bg {
-  background: rgba(43, 46, 68, 0.50);
+  background: rgba(43, 46, 68, 0.5);
   backdrop-filter: blur(15px);
 }
 
