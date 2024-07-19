@@ -1,4 +1,4 @@
-function shadeColor(hexColor: string, magnitude: number) {
+export const shadeColor = (hexColor: string, magnitude: number) => {
   hexColor = hexColor.replace(`#`, ``);
   if (hexColor.length === 6) {
     const decimalColor = parseInt(hexColor, 16);
@@ -14,6 +14,4 @@ function shadeColor(hexColor: string, magnitude: number) {
   } else {
     return hexColor;
   }
-}
-
-export default shadeColor;
+};

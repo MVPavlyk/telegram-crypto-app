@@ -1,65 +1,36 @@
-import { Outlet } from 'react-router-dom';
-
-import React, { createContext, useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { NinjaScreen } from './modules/common/components/ninja-screen/ninja-screen';
+import { AuthApi } from './modules/auth/api/auth.api';
 import WebApp from '@twa-dev/sdk';
-import { userServices } from './services/user.services.ts';
-import { UserInterface } from './libs/user/interfaces/user.interface.ts';
-import { userLeaderBoardInterface } from './libs/user/interfaces';
-import { leaderboardServices } from './services/leaderboard.services.ts';
+import { Routes } from './modules/common/constants';
 
-type TPageContext = {
-  isLoadAnimationEnd: boolean;
-  setIsLoadAnimationEnd: React.Dispatch<React.SetStateAction<boolean>>;
-  user: UserInterface | null;
-  setUser: React.Dispatch<React.SetStateAction<UserInterface | null>>;
-  leaderboardUserData: userLeaderBoardInterface | null;
-};
+export const App = () => {
+  const { mutateAsync } = AuthApi.useSignIn();
 
-export const PageLoadContext = createContext<TPageContext | null>(null);
+  const navigate = useNavigate();
 
-function App() {
-  const [user, setUser] = useState<UserInterface | null>(null);
-  const [leaderboardUserData, setLeaderboardUserData] = useState<userLeaderBoardInterface | null>(null);
+  const handleSignIn = async () => {
+    const user = WebApp.initDataUnsafe.user;
 
-  const tgUser = WebApp?.initDataUnsafe?.user;
-  const isDev = import.meta.env.MODE === 'development';
+    if (!user?.id) {
+      // TODO: verify if we can have such case
+      throw new Error('smth went wrong');
+    }
+
+    const res = await mutateAsync({ telegramId: user?.id });
+
+    // TODO: verify where i can set access token
+    localStorage.setItem('token', res.data.token);
+
+    navigate(Routes.HOME);
+  };
 
   useEffect(() => {
-    if (tgUser?.id || isDev) {
-      const id = tgUser?.id || 13313131319;
+    handleSignIn();
+  }, []);
 
-      userServices
-        .getUser(id)
-        .then(async (value) => {
-          setUser(value);
-
-          const leaderboardData = await leaderboardServices.getUserInfo(id);
-
-          setLeaderboardUserData(leaderboardData);
-        })
-        .catch(async () => {
-          const newUser = await userServices.createUser(id, tgUser?.username || 'no-username');
-
-          if (newUser) {
-            setUser(newUser);
-
-            const leaderboardData = await leaderboardServices.getUserInfo(id);
-
-            setLeaderboardUserData(leaderboardData);
-          }
-        });
-    }
-  }, [tgUser?.id, isDev]);
-
-  const [isLoadAnimationEnd, setIsLoadAnimationEnd] = useState(false);
-
-  return (
-    <PageLoadContext.Provider value={{ isLoadAnimationEnd, setIsLoadAnimationEnd, user, leaderboardUserData, setUser }}>
-      <section>
-        <Outlet />
-      </section>
-    </PageLoadContext.Provider>
-  );
-}
+  return <NinjaScreen isLoading />;
+};
 
 export default App;

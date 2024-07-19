@@ -1,40 +1,72 @@
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
+
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-
 import WebApp from '@twa-dev/sdk';
-import HomePage from './pages/Home';
-import LeaderboardPage from './pages/Leaderboard';
-import BASE_ROUTE, { ROUTES } from './config/routes';
-import UserPage from './pages/User';
-import WalletPage from './pages/Wallet';
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
+import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister';
+
+import { HomePage } from './pages/home/index.tsx';
+import { LeaderboardPage } from './pages/leaderboard/index.tsx';
+import { ProfilePage } from './pages/user/index.tsx';
+import { WalletPage } from './pages/wallet/index.tsx';
+import { Routes } from './modules/common/constants/index.ts';
+import { Protected } from './modules/common/hoc/protected.hoc.tsx';
+import { MutationCache, QueryClient } from '@tanstack/react-query';
 
 WebApp.ready();
 
+const persister = createSyncStoragePersister({
+  storage: window.localStorage,
+});
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 2000,
+      retry: 0,
+      refetchOnWindowFocus: false,
+      retryOnMount: false,
+    },
+    mutations: {
+      retry: 0,
+    },
+  },
+  // configure global cache callbacks to show toast notifications
+  mutationCache: new MutationCache({
+    onSuccess: () => {},
+    onError: () => {},
+  }),
+});
+
 const router = createBrowserRouter([
   {
-    path: BASE_ROUTE,
+    path: Routes.ROOT,
     element: <App />,
     children: [
       {
-        path: ROUTES.HOME,
-        element: <HomePage />,
+        path: Routes.HOME,
+        element: <Protected component={<HomePage />} />,
       },
       {
-        path: ROUTES.LEADERBOARD,
-        element: <LeaderboardPage />,
+        path: Routes.LEADERBOARD,
+        element: <Protected component={<LeaderboardPage />} />,
       },
       {
-        path: ROUTES.USER,
-        element: <UserPage />,
+        path: Routes.PROFILE,
+        element: <Protected component={<ProfilePage />} />,
       },
       {
-        path: ROUTES.WALLET,
-        element: <WalletPage />,
+        path: Routes.WALLET,
+        element: <Protected component={<WalletPage />} />,
       },
     ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(<RouterProvider router={router} />);
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <PersistQueryClientProvider client={queryClient} persistOptions={{ persister }}>
+    <RouterProvider router={router} />
+  </PersistQueryClientProvider>
+);
