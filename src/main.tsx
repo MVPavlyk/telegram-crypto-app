@@ -10,9 +10,10 @@ import { HomePage } from './pages/Home';
 import { LeaderboardPage } from './pages/Leaderboard';
 import { ProfilePage } from './pages/User';
 import { WalletPage } from './pages/Wallet';
-import { Routes } from './modules/common/constants';
+import BASE_ROUTE, { Routes } from './modules/common/constants';
 import { Protected } from './modules/common/hoc/protected.hoc.tsx';
 import { MutationCache, QueryClient } from '@tanstack/react-query';
+import App from './App.tsx';
 
 WebApp.ready();
 
@@ -41,20 +42,26 @@ const queryClient = new QueryClient({
 
 const router = createBrowserRouter([
   {
-    path: Routes.HOME,
-    element: <Protected component={<HomePage />} />,
-  },
-  {
-    path: Routes.LEADERBOARD,
-    element: <Protected component={<LeaderboardPage />} />,
-  },
-  {
-    path: Routes.PROFILE,
-    element: <Protected component={<ProfilePage />} />,
-  },
-  {
-    path: Routes.WALLET,
-    element: <Protected component={<WalletPage />} />,
+    path: BASE_ROUTE,
+    element: <App />,
+    children: [
+      {
+        path: Routes.HOME,
+        element: <Protected component={<HomePage />} />,
+      },
+      {
+        path: Routes.LEADERBOARD,
+        element: <Protected component={<LeaderboardPage />} />,
+      },
+      {
+        path: Routes.PROFILE,
+        element: <Protected component={<ProfilePage />} />,
+      },
+      {
+        path: Routes.WALLET,
+        element: <Protected component={<WalletPage />} />,
+      },
+    ],
   },
 ]);
 

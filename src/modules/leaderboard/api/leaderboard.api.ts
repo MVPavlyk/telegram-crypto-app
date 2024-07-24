@@ -1,6 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { axiosInstance } from '../../common/api/axios.api';
 import { LeaderboardQuery } from '../../common/types';
+import { AxiosError } from 'axios';
+import { userLeaderBoardInterface } from '../../../libs/user/interfaces';
 
 export namespace LeaderboardApi {
   const ENDPOINT = 'leaderboard';
@@ -11,8 +13,11 @@ export namespace LeaderboardApi {
   export const useGetMany = ({ queryObject }: { queryObject: LeaderboardQuery }) =>
     useQuery({ queryKey: ['leaderboard'], queryFn: () => getMany(queryObject) });
 
-  const getOne = (id: string) => axiosInstance.get(`${ENDPOINT}/${id}`);
+  const getOne = (id: number) => axiosInstance.get(`${ENDPOINT}/${id}`).then((value) => value.data);
 
-  export const useGetOne = ({ id }: { id: string }) =>
-    useQuery({ queryKey: ['leaderboard', id], queryFn: () => getOne(id) });
+  export const useGetOne = () =>
+    useMutation<userLeaderBoardInterface[], AxiosError, number>({
+      mutationKey: ['leaderboard'],
+      mutationFn: (id: number) => getOne(id),
+    });
 }

@@ -1,7 +1,7 @@
 import WinIcon from '../../../assets/icons/WinIcon.tsx';
 import LoseIcon from '../../../assets/icons/LoseIcon.tsx';
 import { Avatar } from '../../common/components/avatar/avatar.tsx';
-import { AvatarType, User } from '../../common/types/index.ts';
+import { AvatarType, User } from '../../common/types';
 
 interface Props {
   userAvatar: AvatarType;

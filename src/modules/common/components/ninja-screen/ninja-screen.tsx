@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Lottie, { LottieRefCurrentProps, useLottie } from 'lottie-react';
 import { DotLottiePlayer } from '@dotlottie/react-player';
 
@@ -7,13 +7,11 @@ import logoAnimation from '../../../../assets/animations/Ninja Logo.json';
 import progressAnimation from '../../../../assets/animations/Progress Bar.json';
 import eyeAnimation from '../../../../assets/animations/Full Eye Blink.json';
 import fullAnimation from '../../../../assets/animations/Rain & Lightning.lottie';
+import { useAppStore } from '../../store';
 
-interface Props {
-  isLoading?: boolean;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-}
+export const NinjaScreen = () => {
+  const { isLoading } = useAppStore();
 
-export const NinjaScreen = ({ isLoading, setIsLoading }: Props) => {
   const progressRef = useRef<LottieRefCurrentProps | null>(null);
 
   const progressOptions = {
@@ -21,7 +19,6 @@ export const NinjaScreen = ({ isLoading, setIsLoading }: Props) => {
     loop: false,
     autoplay: true,
     lottieRef: progressRef,
-    onComplete: () => setIsLoading(false),
   };
 
   useEffect(() => {
@@ -44,7 +41,7 @@ export const NinjaScreen = ({ isLoading, setIsLoading }: Props) => {
   return (
     <>
       <div className='absolute z-[1] w-screen h-screen top-0 left-0 overflow-hidden'>
-        <img src={bgImage} alt='bg-img' className='w-screen absolute md:bottom-auto md:-top-[27.7vw]' />
+        <img src={bgImage} alt='bg-img' className='w-screen absolute bottom-0 md:bottom-auto md:-top-[27.7vw]' />
         <div className='absolute left-[9.48vw] bottom-[142.8vw] md:bottom-auto md:top-[25.7vw]'>
           {EyeAnimationFirst}
         </div>
