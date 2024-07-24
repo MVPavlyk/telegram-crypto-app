@@ -1,37 +1,43 @@
-import { useEffect, useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
-import { NinjaScreen } from './modules/common/components/ninja-screen/ninja-screen';
+import { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 import { AuthApi } from './modules/auth/api/auth.api';
 import WebApp from '@twa-dev/sdk';
-import { Routes } from './modules/common/constants';
-import { PageLayout } from './modules/common/components/layout/page-layout.tsx';
+import { LeaderboardApi } from './modules/leaderboard/api/leaderboard.api.ts';
+import { useAppStore } from './modules/common/store';
 
 export const App = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { setUser, setStatistics, setIsLoading } = useAppStore();
 
-  const { mutateAsync } = AuthApi.useSignIn();
+  const telegramUser = WebApp.initDataUnsafe.user;
 
-  const navigate = useNavigate();
+  const telegramId = telegramUser?.id || import.meta.env.MODE === 'development' ? 754126026 : null;
+
+  const { mutateAsync: signInMutation } = AuthApi.useSignIn();
+  const { mutateAsync: getLeaderboardMutation } = LeaderboardApi.useGetOne();
 
   const handleSignIn = async () => {
-    const user = WebApp.initDataUnsafe.user;
+    if (!telegramId) return;
 
-    if (!user?.id) {
-      // TODO: verify if we can have such case
-      throw new Error('smth went wrong');
+    const res = await signInMutation({ telegramId });
+
+    if (res.status === 200) {
+      setUser(res.data);
     }
 
-    const res = await mutateAsync({ telegramId: user?.id });
+    const leaderboardData = await getLeaderboardMutation(telegramId);
 
-    // TODO: verify where i can set access token
-    localStorage.setItem('token', res.data.token);
+    if (leaderboardData[0]) {
+      setStatistics(leaderboardData[0]);
+    }
 
-    navigate(Routes.HOME);
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    handleSignIn();
-  }, []);
+    if (telegramId) {
+      handleSignIn();
+    }
+  }, [telegramId]);
 
   return <Outlet />;
 };

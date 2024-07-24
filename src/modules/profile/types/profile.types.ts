@@ -6,7 +6,7 @@ export interface CreateUserPayload {
 }
 
 export interface UpdateUserPayload extends Partial<CreateUserPayload> {
-  id: string;
+  id: number;
   avatar?: Partial<AvatarType>;
 }
 

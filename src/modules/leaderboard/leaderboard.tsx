@@ -22,16 +22,9 @@ export const Leaderboard = () => {
 
   const { data, isLoading, refetch } = LeaderboardApi.useGetMany({ queryObject });
 
-  const loadMorePosts = async () => {
-    setQueryObject((prev) => ({
-      ...prev,
-      offset: (page - 1) * prev.limit,
-      mode: String(gameModeSizeMapping[gameMode]),
-    }));
+  useEffect(() => {
     refetch();
-  };
-
-  console.log(queryObject);
+  }, [queryObject]);
 
   useEffect(() => {
     if (data?.length) {
@@ -42,8 +35,11 @@ export const Leaderboard = () => {
   }, [data]);
 
   useEffect(() => {
-    console.log(page);
-    loadMorePosts();
+    setQueryObject((prev) => ({
+      ...prev,
+      offset: (page - 1) * prev.limit,
+      mode: String(gameModeSizeMapping[gameMode]),
+    }));
   }, [page]);
 
   useEffect(() => {
@@ -75,10 +71,6 @@ export const Leaderboard = () => {
     },
     [isLoading]
   );
-
-  useEffect(() => {
-    console.log(items);
-  }, [items]);
 
   return (
     <div className='w-full h-[calc(100vh-90px)] px-5 pt-[30px]'>

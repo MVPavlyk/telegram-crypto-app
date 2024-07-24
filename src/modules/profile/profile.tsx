@@ -9,22 +9,27 @@ import { useAppStore } from '../common/store';
 import { AvatarType } from '../common/types';
 
 export const Profile = () => {
-  const { user, statistics } = useAppStore((state) => ({ ...state, user: state.user!, statistics: state.statistics! }));
+  const { user, statistics, setUser } = useAppStore((state) => ({
+    ...state,
+    user: state.user!,
+    statistics: state.statistics!,
+  }));
 
-  const [avatar, setAvatar] = useState<AvatarType | null>(null);
+  const [avatar, setAvatar] = useState<AvatarType | null>(user?.avatar);
 
   const history = mockHistory;
 
   const { mutateAsync: updateOne } = ProfileApi.useUpdateOne();
 
-  const handleUpdateUser = async (data: { avatar: AvatarType }) => {
-    await updateOne({ id: user.id, ...data });
-    setAvatar(null);
-  };
+  useEffect(() => {
+    if (user?.avatar) setAvatar(user.avatar);
+  }, [user?.avatar]);
 
   useEffect(() => {
-    if (avatar) {
-      handleUpdateUser({ avatar });
+    if (setUser && avatar && user?.avatar && JSON.stringify(user?.avatar) !== JSON.stringify(avatar)) {
+      const newUser = { avatar, username: user?.telegramUsername };
+
+      updateOne({ id: user.telegramId, ...newUser }).then((value) => setUser(value));
     }
   }, [avatar]);
 
@@ -43,7 +48,7 @@ export const Profile = () => {
 
   return (
     <>
-      {!!user && (
+      {!!user && !!statistics && (
         <>
           <div className='w-full h-[calc(100vh-90px)] px-5 pt-[30px] overflow-auto no-scrollbar'>
             <div className='w-full flex items-center gap-x-4'>
@@ -73,8 +78,8 @@ export const Profile = () => {
             {!!history.length && (
               <div className='w-full mt-8 flex flex-col items-center'>
                 <div className='w-full text-left text-white text-xl'>History</div>
-                {history.map(({ win, opponent }) => (
-                  <GamesHistory userAvatar={user.avatar} opponent={opponent} win={win} />
+                {history.map(({ id, win, opponent }) => (
+                  <GamesHistory key={id} userAvatar={user.avatar} opponent={opponent} win={win} />
                 ))}
                 <button className='h-16 w-full text-[24px] mt-5 font-[600] default-btn'>See all history</button>
               </div>
