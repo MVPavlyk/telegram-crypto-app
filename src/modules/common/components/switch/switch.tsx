@@ -1,13 +1,14 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
+import { GameMode } from '../../../leaderboard/constants';
 
 interface Props {
   options: {
-    onClick: Function;
+    onClick: React.Dispatch<React.SetStateAction<GameMode | string>>;
     icon?: ReactNode;
-    value: string;
+    value: GameMode | string;
   }[];
-  selectedValue: string;
+  selectedValue: GameMode | string;
 }
 
 export const Switch = ({ options, selectedValue }: Props) => {

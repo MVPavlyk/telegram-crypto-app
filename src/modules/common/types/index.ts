@@ -16,3 +16,9 @@ export interface AvatarType {
   hood: string;
   eyes: string;
 }
+
+export interface LeaderboardQuery {
+  limit: number;
+  offset: number;
+  mode: string;
+}

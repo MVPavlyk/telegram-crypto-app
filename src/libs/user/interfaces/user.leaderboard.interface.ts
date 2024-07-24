@@ -1,4 +1,4 @@
-import { TAvatar } from '../../../types/common.ts';
+import { AvatarType } from '../../../modules/common/types';
 
 export interface userLeaderBoardInterface {
   userId: string;
@@ -8,5 +8,5 @@ export interface userLeaderBoardInterface {
   gamesPlayed: number;
   biggestWin: number;
   rank: number;
-  avatar: TAvatar;
+  avatar: AvatarType;
 }

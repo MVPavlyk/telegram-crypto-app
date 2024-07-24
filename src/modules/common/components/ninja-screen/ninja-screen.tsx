@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Lottie, { LottieRefCurrentProps, useLottie } from 'lottie-react';
 import { DotLottiePlayer } from '@dotlottie/react-player';
 
@@ -10,9 +10,10 @@ import fullAnimation from '../../../../assets/animations/Rain & Lightning.lottie
 
 interface Props {
   isLoading?: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const NinjaScreen = ({ isLoading }: Props) => {
+export const NinjaScreen = ({ isLoading, setIsLoading }: Props) => {
   const progressRef = useRef<LottieRefCurrentProps | null>(null);
 
   const progressOptions = {
@@ -20,6 +21,7 @@ export const NinjaScreen = ({ isLoading }: Props) => {
     loop: false,
     autoplay: true,
     lottieRef: progressRef,
+    onComplete: () => setIsLoading(false),
   };
 
   useEffect(() => {
@@ -70,7 +72,7 @@ export const NinjaScreen = ({ isLoading }: Props) => {
           </div>
         )}
       </div>
-      {!isLoading && (
+      {isLoading && (
         <div className='home-advice w-screen px-10 text-center text-[#4A4E64] text-sm xs:text-xl absolute bottom-5 xs:bottom-[50px] z-[4]'>
           Advice: If you are in room with 9 people always check your balance
         </div>

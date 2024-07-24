@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import { Avatar } from '../common/components/avatar/avatar.tsx';
 import { GamesHistory } from './components/history.tsx';
 import { AvatarEditModal } from '../common/components/avatar-edit-modal/avatar-edit-modal.tsx';
-import { mockHistory } from './mock/index.ts';
+import { mockHistory } from './mock';
 import { ProfileApi } from './api/profile.api.ts';
-import { useAppStore } from '../common/store/index.ts';
-import { AvatarType } from '../common/types/index.ts';
+import { useAppStore } from '../common/store';
+import { AvatarType } from '../common/types';
 
 export const Profile = () => {
   const { user, statistics } = useAppStore((state) => ({ ...state, user: state.user!, statistics: state.statistics! }));
@@ -33,11 +33,11 @@ export const Profile = () => {
   const userInfo = [
     {
       label: 'Games played',
-      value: statistics.gamesPlayed,
+      value: statistics?.gamesPlayed,
     },
     {
       label: 'Biggest win',
-      value: statistics.biggestWin,
+      value: statistics?.biggestWin,
     },
   ];
 

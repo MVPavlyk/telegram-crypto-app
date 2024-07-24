@@ -9,12 +9,14 @@ import WalletOpenIcon from '../../assets/icons/WalletOpenIcon.tsx';
 
 import { Avatar } from '../common/components/avatar/avatar.tsx';
 import { Switch } from '../common/components/switch/switch.tsx';
-import { useAppStore } from '../common/store/index.ts';
+import { useAppStore } from '../common/store';
 
 export const Wallet = () => {
   const { user, statistics } = useAppStore((state) => ({ ...state, user: state.user!, statistics: state.statistics! }));
 
   const [coinCase, setCoinCase] = useState<string>('usdt');
+
+  if (!user || !statistics) return null;
 
   return (
     <>

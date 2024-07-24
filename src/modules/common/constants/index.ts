@@ -1,7 +1,6 @@
 export const enum Routes {
-  HOME = 'home',
-  LEADERBOARD = 'leaderboard',
-  ROOT = '',
-  WALLET = 'wallet',
-  PROFILE = 'profile',
+  HOME = '/',
+  LEADERBOARD = '/leaderboard',
+  WALLET = '/wallet',
+  PROFILE = '/profile',
 }
