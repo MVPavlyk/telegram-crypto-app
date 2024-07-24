@@ -9,5 +9,5 @@ export default defineConfig({
     outDir: './docs',
   },
   assetsInclude: '**/*.lottie',
-  base: '/',
+  base: '/telegram-crypto-app',
 });

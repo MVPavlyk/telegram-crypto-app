@@ -9,7 +9,7 @@ module.exports = {
     // Make sure it's always the last config, so it gets the chance to override other configs.
     'prettier',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'src/modules/blockchain/contracts/*', 'src/modules/blockchain/hooks/useGameTon.ts'],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh'],
   rules: {
@@ -18,6 +18,6 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'linebreak-style': 0,
-
+    '@typescript-eslint/no-namespace': 0,
   },
 };

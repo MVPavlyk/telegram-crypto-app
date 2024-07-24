@@ -1,11 +1,14 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { NinjaScreen } from './modules/common/components/ninja-screen/ninja-screen';
 import { AuthApi } from './modules/auth/api/auth.api';
 import WebApp from '@twa-dev/sdk';
 import { Routes } from './modules/common/constants';
+import { PageLayout } from './modules/common/components/layout/page-layout.tsx';
 
 export const App = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   const { mutateAsync } = AuthApi.useSignIn();
 
   const navigate = useNavigate();
@@ -30,7 +33,7 @@ export const App = () => {
     handleSignIn();
   }, []);
 
-  return <NinjaScreen isLoading />;
+  return <Outlet />;
 };
 
 export default App;

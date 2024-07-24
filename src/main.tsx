@@ -1,5 +1,4 @@
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
 
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
@@ -7,11 +6,11 @@ import WebApp from '@twa-dev/sdk';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister';
 
-import { HomePage } from './pages/home/index.tsx';
-import { LeaderboardPage } from './pages/leaderboard/index.tsx';
-import { ProfilePage } from './pages/user/index.tsx';
-import { WalletPage } from './pages/wallet/index.tsx';
-import { Routes } from './modules/common/constants/index.ts';
+import { HomePage } from './pages/Home';
+import { LeaderboardPage } from './pages/Leaderboard';
+import { ProfilePage } from './pages/User';
+import { WalletPage } from './pages/Wallet';
+import { Routes } from './modules/common/constants';
 import { Protected } from './modules/common/hoc/protected.hoc.tsx';
 import { MutationCache, QueryClient } from '@tanstack/react-query';
 
@@ -42,26 +41,20 @@ const queryClient = new QueryClient({
 
 const router = createBrowserRouter([
   {
-    path: Routes.ROOT,
-    element: <App />,
-    children: [
-      {
-        path: Routes.HOME,
-        element: <Protected component={<HomePage />} />,
-      },
-      {
-        path: Routes.LEADERBOARD,
-        element: <Protected component={<LeaderboardPage />} />,
-      },
-      {
-        path: Routes.PROFILE,
-        element: <Protected component={<ProfilePage />} />,
-      },
-      {
-        path: Routes.WALLET,
-        element: <Protected component={<WalletPage />} />,
-      },
-    ],
+    path: Routes.HOME,
+    element: <Protected component={<HomePage />} />,
+  },
+  {
+    path: Routes.LEADERBOARD,
+    element: <Protected component={<LeaderboardPage />} />,
+  },
+  {
+    path: Routes.PROFILE,
+    element: <Protected component={<ProfilePage />} />,
+  },
+  {
+    path: Routes.WALLET,
+    element: <Protected component={<WalletPage />} />,
   },
 ]);
 
