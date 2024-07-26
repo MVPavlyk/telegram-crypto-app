@@ -14,7 +14,7 @@ import { useAppStore } from '../common/store';
 export const Wallet = () => {
   const { user, statistics } = useAppStore((state) => ({ ...state, user: state.user!, statistics: state.statistics! }));
 
-  const [coinCase, setCoinCase] = useState<string>('usdt');
+  const [currency, setCurrency] = useState<string>('usdt');
 
   if (!user || !statistics) return null;
 
@@ -49,10 +49,10 @@ export const Wallet = () => {
           <div className='text-xl text-white font-bold'>45,964</div>
         </div>
         <Switch
-          selectedValue={coinCase}
+          selectedValue={currency}
           options={[
-            { value: 'usdt', icon: <UsdtWhite />, onClick: setCoinCase },
-            { value: 'ton', icon: <TonWhite />, onClick: setCoinCase },
+            { value: 'usdt', icon: <UsdtWhite />, onClick: setCurrency },
+            { value: 'ton', icon: <TonWhite />, onClick: setCurrency },
           ]}
         />
       </div>

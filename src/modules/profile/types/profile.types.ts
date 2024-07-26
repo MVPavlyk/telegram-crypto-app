@@ -1,12 +1,11 @@
 import { AvatarType, User } from '../../common/types';
 
 export interface CreateUserPayload {
-  telegramUsername: string;
-  telegramId: string;
+  username: string;
+  id: number;
 }
 
 export interface UpdateUserPayload extends Partial<CreateUserPayload> {
-  id: number;
   avatar?: Partial<AvatarType>;
 }
 

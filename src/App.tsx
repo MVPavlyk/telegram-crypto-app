@@ -13,6 +13,7 @@ export const App = () => {
   const telegramId = telegramUser?.id || import.meta.env.MODE === 'development' ? 754126026 : null;
 
   const { mutateAsync: signInMutation } = AuthApi.useSignIn();
+  const { mutateAsync: signUpMutation } = AuthApi.useSignUp();
   const { mutateAsync: getLeaderboardMutation } = LeaderboardApi.useGetOne();
 
   const handleSignIn = async () => {
@@ -22,6 +23,10 @@ export const App = () => {
 
     if (res.status === 200) {
       setUser(res.data);
+    } else {
+      const newUser = await signUpMutation({ id: telegramId, username: telegramUser?.username as string });
+
+      setUser(newUser);
     }
 
     const leaderboardData = await getLeaderboardMutation(telegramId);

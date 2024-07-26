@@ -24,7 +24,12 @@ body {
 }
 
 .main-blue-btn {
-  background: #2f3061;
+  background: #1F2135;
+}
+
+.main-blue-btn-dark {
+  background: #1F2135;
+  color: #565A74;
 }
 
 .mirror {

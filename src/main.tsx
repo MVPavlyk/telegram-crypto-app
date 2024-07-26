@@ -14,6 +14,7 @@ import BASE_ROUTE, { Routes } from './modules/common/constants';
 import { Protected } from './modules/common/hoc/protected.hoc.tsx';
 import { MutationCache, QueryClient } from '@tanstack/react-query';
 import App from './App.tsx';
+import GameSearch from './pages/GameSearch';
 
 WebApp.ready();
 
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: Routes.WALLET,
         element: <Protected component={<WalletPage />} />,
+      },
+      {
+        path: Routes.GAME_SEARCH,
+        element: <Protected component={<GameSearch />} />,
       },
     ],
   },
