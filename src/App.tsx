@@ -11,6 +11,11 @@ WebApp.expand();
 export const App = () => {
   useEffect(() => {
     WebApp.expand();
+    // @ts-ignore
+    if (WebApp?.disableVerticalSwipes) {
+      // @ts-ignore
+      WebApp?.disableVerticalSwipes();
+    }
   }, []);
 
   const { setUser, setStatistics, setIsLoading } = useAppStore();
