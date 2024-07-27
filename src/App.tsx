@@ -6,6 +6,7 @@ import { LeaderboardApi } from './modules/leaderboard/api/leaderboard.api.ts';
 import { useAppStore } from './modules/common/store';
 
 WebApp.ready();
+WebApp.expand();
 
 export const App = () => {
   const { setUser, setStatistics, setIsLoading } = useAppStore();
