@@ -9,6 +9,10 @@ WebApp.ready();
 WebApp.expand();
 
 export const App = () => {
+  useEffect(() => {
+    WebApp.expand();
+  }, []);
+
   const { setUser, setStatistics, setIsLoading } = useAppStore();
 
   const telegramUser = WebApp.initDataUnsafe.user;
