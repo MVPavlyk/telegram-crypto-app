@@ -82,12 +82,21 @@ body {
         min-height: calc(66vh - 88px) !important;
     }
 
+
     .home-advice {
         /*bottom: 25px !important;*/
         /*line-height: 20px !important;*/
         /*font-size: 14px !important;*/
     }
 }
+@media screen and (min-height: 660px) {
+    .bg-wrapper {
+     top: -100px!important;
+    }
+
+}
+
+
 
 .history-item:last-child {
     border: none;

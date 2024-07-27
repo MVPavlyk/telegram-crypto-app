@@ -45,7 +45,7 @@ export const NinjaScreen = () => {
     <>
       <MiniUserInfo />
       <div className='absolute z-[1] w-screen h-screen top-0 left-0 overflow-hidden'>
-        <div className='h-full w-full relative top-[110px] xs:top-[130px] bg:top-0'>
+        <div className='h-full w-full relative top-[110px] xs:top-[130px] bg-wrapper bg:top-0'>
           <img src={bgImage} alt='bg-img' className='w-screen absolute bottom-0 md:bottom-auto md:-top-[27.7vw]' />
           <div className='absolute left-[9.48vw] bottom-[142.8vw] md:bottom-auto md:top-[25.7vw]'>
             {EyeAnimationFirst}
