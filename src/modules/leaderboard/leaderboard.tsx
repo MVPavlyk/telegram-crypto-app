@@ -41,10 +41,6 @@ export const Leaderboard = () => {
   }, [data]);
 
   useEffect(() => {
-    console.log(items);
-  }, [items]);
-
-  useEffect(() => {
     setQueryObject((prev) => ({
       ...prev,
       offset: (page - 1) * prev.limit,

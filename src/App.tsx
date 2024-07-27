@@ -28,6 +28,12 @@ export const App = () => {
       const res = await signInMutation({ telegramId });
 
       setUser(res.data);
+
+      const leaderboardData = await getLeaderboardMutation(telegramId);
+
+      if (leaderboardData[0]) {
+        setStatistics(leaderboardData[0]);
+      }
     } catch (e) {
       const newUser = await signUpMutation({ id: telegramId, username: telegramUser?.username as string });
 

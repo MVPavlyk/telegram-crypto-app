@@ -1,6 +1,7 @@
 import { userLeaderBoardInterface } from '../../../libs/user/interfaces';
 import React from 'react';
 import { Item } from './item.component';
+import { useAppStore } from '../../common/store';
 
 interface LeaderboardListProps {
   list: userLeaderBoardInterface[];
@@ -8,6 +9,8 @@ interface LeaderboardListProps {
 }
 
 export const List: React.FC<LeaderboardListProps> = ({ list, lastUserElementRef }: LeaderboardListProps) => {
+  const { statistics } = useAppStore((state) => ({ ...state, user: state.user!, statistics: state.statistics! }));
+
   return (
     <div className='w-full flex flex-col h-[calc(100%-80px)] max-h-[calc(100%-80px)] mt-[30px] overflow-auto no-scrollbar'>
       {Array.isArray(list) &&
