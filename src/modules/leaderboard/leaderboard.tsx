@@ -28,11 +28,21 @@ export const Leaderboard = () => {
 
   useEffect(() => {
     if (data?.length) {
-      setItems((exist) =>
-        exist[0]?.userId !== items[0]?.userId ? [...items, ...data] : data?.length ? [...items, ...data] : exist
-      );
+      setItems((exist) => {
+        if (exist[0]?.userId === data[0].userId) {
+          return exist;
+        }
+
+        if (!exist.length) return data;
+
+        return [...exist, ...data];
+      });
     }
   }, [data]);
+
+  useEffect(() => {
+    console.log(items);
+  }, [items]);
 
   useEffect(() => {
     setQueryObject((prev) => ({
@@ -40,14 +50,14 @@ export const Leaderboard = () => {
       offset: (page - 1) * prev.limit,
       mode: String(gameModeSizeMapping[gameMode]),
     }));
-  }, [page]);
+  }, [page, gameMode]);
 
-  useEffect(() => {
-    if (gameMode) {
-      setPage(1);
-      setItems([]);
-    }
-  }, [gameMode]);
+  const changeGameMode = (newGameMode: GameMode) => {
+    setPage(1);
+    setItems([]);
+
+    setGameMode(newGameMode);
+  };
 
   const lastUserElementRef = useCallback(
     (node: HTMLDivElement | null) => {
@@ -75,10 +85,11 @@ export const Leaderboard = () => {
   return (
     <div className='w-full h-[calc(100vh-90px)] px-5 pt-[30px]'>
       <Switch
+        isDark={false}
         selectedValue={gameMode}
         options={[
-          { value: '1vs9', onClick: setGameMode },
-          { value: '1vs1', onClick: setGameMode },
+          { value: '1vs9', onClick: changeGameMode },
+          { value: '1vs1', onClick: changeGameMode },
         ]}
       />
       {!isLoading && items && <List list={items} lastUserElementRef={lastUserElementRef} />}

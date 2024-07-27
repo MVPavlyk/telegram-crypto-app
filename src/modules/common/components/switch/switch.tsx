@@ -9,9 +9,10 @@ interface Props {
     value: GameMode | string;
   }[];
   selectedValue: GameMode | string;
+  isDark?: boolean;
 }
 
-export const Switch = ({ options, selectedValue }: Props) => {
+export const Switch = ({ options, selectedValue, isDark = true }: Props) => {
   return (
     <div className='w-full grid grid-cols-2 gap-2.5'>
       {options.map(({ onClick, value, icon }) => (
@@ -20,7 +21,7 @@ export const Switch = ({ options, selectedValue }: Props) => {
           onClick={() => onClick(value)}
           className={classNames(
             'default-btn text-2xl h-[50px] font-semibold w-full',
-            value !== selectedValue && 'main-blue-btn'
+            value !== selectedValue ? (isDark ? 'main-blue-btn-dark' : 'main-blue-btn') : ''
           )}
         >
           {icon ? icon : value}
