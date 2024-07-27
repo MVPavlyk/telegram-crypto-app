@@ -10,6 +10,7 @@ import WalletOpenIcon from '../../assets/icons/WalletOpenIcon.tsx';
 import { Avatar } from '../common/components/avatar/avatar.tsx';
 import { Switch } from '../common/components/switch/switch.tsx';
 import { useAppStore } from '../common/store';
+import HistoryList from './components/history.list.component.tsx';
 
 export const Wallet = () => {
   const { user, statistics } = useAppStore((state) => ({ ...state, user: state.user!, statistics: state.statistics! }));
@@ -55,6 +56,7 @@ export const Wallet = () => {
             { value: 'ton', icon: <TonWhite />, onClick: setCurrency },
           ]}
         />
+        <HistoryList />
       </div>
     </>
   );
