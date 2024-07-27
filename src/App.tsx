@@ -17,38 +17,34 @@ export const App = () => {
 
   const telegramUser = WebApp.initDataUnsafe.user;
 
-  const telegramId = telegramUser?.id ? telegramUser?.id : import.meta.env.MODE === 'development' ? 1331313131 : null;
+  const telegramId = telegramUser?.id ? telegramUser?.id : import.meta.env.MODE === 'development' ? 1331313131 : 0;
 
   const { mutateAsync: signInMutation } = AuthApi.useSignIn();
   const { mutateAsync: signUpMutation } = AuthApi.useSignUp();
   const { mutateAsync: getLeaderboardMutation } = LeaderboardApi.useGetOne();
 
   const handleSignIn = async () => {
-    if (!telegramId) return;
+    try {
+      const res = await signInMutation({ telegramId });
 
-    const res = await signInMutation({ telegramId });
-
-    if (res.status === 200) {
       setUser(res.data);
-    } else {
+    } catch (e) {
       const newUser = await signUpMutation({ id: telegramId, username: telegramUser?.username as string });
 
       setUser(newUser);
-    }
 
-    const leaderboardData = await getLeaderboardMutation(telegramId);
+      const leaderboardData = await getLeaderboardMutation(newUser.telegramId);
 
-    if (leaderboardData[0]) {
-      setStatistics(leaderboardData[0]);
+      if (leaderboardData[0]) {
+        setStatistics(leaderboardData[0]);
+      }
     }
 
     setIsLoading(false);
   };
 
   useEffect(() => {
-    if (telegramId) {
-      handleSignIn();
-    }
+    handleSignIn();
   }, [telegramId]);
 
   console.log(telegramUser, WebApp);
