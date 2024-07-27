@@ -10,7 +10,7 @@ export const App = () => {
 
   const telegramUser = WebApp.initDataUnsafe.user;
 
-  const telegramId = telegramUser?.id || import.meta.env.MODE === 'development' ? 754126026 : null;
+  const telegramId = telegramUser?.id || import.meta.env.MODE === 'development' ? 1331313131 : null;
 
   const { mutateAsync: signInMutation } = AuthApi.useSignIn();
   const { mutateAsync: signUpMutation } = AuthApi.useSignUp();
