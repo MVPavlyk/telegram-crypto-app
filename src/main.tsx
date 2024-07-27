@@ -2,7 +2,6 @@ import ReactDOM from 'react-dom/client';
 
 import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import WebApp from '@twa-dev/sdk';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persister';
 
@@ -15,8 +14,6 @@ import { Protected } from './modules/common/hoc/protected.hoc.tsx';
 import { MutationCache, QueryClient } from '@tanstack/react-query';
 import App from './App.tsx';
 import GameSearch from './pages/GameSearch';
-
-WebApp.ready();
 
 const persister = createSyncStoragePersister({
   storage: window.localStorage,

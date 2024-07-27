@@ -5,12 +5,14 @@ import WebApp from '@twa-dev/sdk';
 import { LeaderboardApi } from './modules/leaderboard/api/leaderboard.api.ts';
 import { useAppStore } from './modules/common/store';
 
+WebApp.ready();
+
 export const App = () => {
   const { setUser, setStatistics, setIsLoading } = useAppStore();
 
   const telegramUser = WebApp.initDataUnsafe.user;
 
-  const telegramId = telegramUser?.id || import.meta.env.MODE === 'development' ? 1331313131 : null;
+  const telegramId = telegramUser?.id ? telegramUser?.id : import.meta.env.MODE === 'development' ? 1331313131 : null;
 
   const { mutateAsync: signInMutation } = AuthApi.useSignIn();
   const { mutateAsync: signUpMutation } = AuthApi.useSignUp();
@@ -43,6 +45,8 @@ export const App = () => {
       handleSignIn();
     }
   }, [telegramId]);
+
+  console.log(telegramUser, WebApp);
 
   return <Outlet />;
 };
