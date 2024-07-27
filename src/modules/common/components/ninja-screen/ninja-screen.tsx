@@ -10,6 +10,7 @@ import fullAnimation from '../../../../assets/animations/Rain & Lightning.lottie
 import { useAppStore } from '../../store';
 import { Link } from 'react-router-dom';
 import { Routes } from '../../constants';
+import MiniUserInfo from '../../../profile/components/miniUserInfo.tsx';
 
 export const NinjaScreen = () => {
   const { isLoading } = useAppStore();
@@ -42,13 +43,16 @@ export const NinjaScreen = () => {
 
   return (
     <>
+      <MiniUserInfo />
       <div className='absolute z-[1] w-screen h-screen top-0 left-0 overflow-hidden'>
-        <img src={bgImage} alt='bg-img' className='w-screen absolute bottom-0 md:bottom-auto md:-top-[27.7vw]' />
-        <div className='absolute left-[9.48vw] bottom-[142.8vw] md:bottom-auto md:top-[25.7vw]'>
-          {EyeAnimationFirst}
-        </div>
-        <div className='absolute right-[9.48vw] bottom-[142.3vw] md:bottom-auto md:top-[26.1vw] mirror'>
-          {EyeAnimationSecond}
+        <div className='h-full w-full relative top-[110px] xs:top-[130px] md:top-0'>
+          <img src={bgImage} alt='bg-img' className='w-screen absolute bottom-0 md:bottom-auto md:-top-[27.7vw]' />
+          <div className='absolute left-[9.48vw] bottom-[142.8vw] md:bottom-auto md:top-[25.7vw]'>
+            {EyeAnimationFirst}
+          </div>
+          <div className='absolute right-[9.48vw] bottom-[142.3vw] md:bottom-auto md:top-[26.1vw] mirror'>
+            {EyeAnimationSecond}
+          </div>
         </div>
       </div>
       <div className='h-screen w-screen relative z-[2] left-0 bottom-0 overflow-hidden'>
