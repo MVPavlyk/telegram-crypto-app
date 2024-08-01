@@ -90,9 +90,9 @@ body {
     }
 }
 @media screen and (min-height: 660px) {
-    .bg-wrapper {
-     top: -100px!important;
-    }
+    /*.bg-wrapper {*/
+    /* top: -100px!important;*/
+    /*}*/
 
 }
 
