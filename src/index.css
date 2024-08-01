@@ -8,6 +8,10 @@ body {
     background: url('./assets/main-bg.svg') center / cover;
 }
 
+body {
+    touch-action: none !important;
+}
+
 .default-btn,
 .default-btn-disabled {
     border: none;
@@ -89,13 +93,13 @@ body {
         /*font-size: 14px !important;*/
     }
 }
+
 @media screen and (min-height: 660px) {
     /*.bg-wrapper {*/
     /* top: -100px!important;*/
     /*}*/
 
 }
-
 
 
 .history-item:last-child {
