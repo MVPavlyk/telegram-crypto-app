@@ -79,7 +79,7 @@ export const Leaderboard = () => {
   );
 
   return (
-    <div className='w-full h-full px-5 pt-[30px]'>
+    <div className='w-full h-[calc(100vh-90px)] px-5 pt-[30px]'>
       <Switch
         isDark={false}
         selectedValue={gameMode}
