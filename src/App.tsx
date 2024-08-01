@@ -11,11 +11,10 @@ WebApp.expand();
 export const App = () => {
   useEffect(() => {
     WebApp.expand();
-    // @ts-ignore
-    if (WebApp?.disableVerticalSwipes) {
-      // @ts-ignore
-      WebApp?.disableVerticalSwipes();
-    }
+    WebApp.setHeaderColor('#21232F');
+    WebApp.setBackgroundColor('#21232F');
+
+    console.log(WebApp);
   }, []);
 
   const { setUser, setStatistics, setIsLoading } = useAppStore();
