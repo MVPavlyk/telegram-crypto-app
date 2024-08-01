@@ -13,9 +13,9 @@ export const List: React.FC<LeaderboardListProps> = ({ list, lastUserElementRef 
   const { statistics } = useAppStore((state) => ({ ...state, user: state.user!, statistics: state.statistics! }));
 
   return (
-    <section className='relative w-full h-full mt-[30px] pb-20'>
+    <section className='relative w-full h-[calc(100%-80px)] max-h-[calc(100%-80px)] mt-[30px]'>
       {statistics && (
-        <div className='default-btn absolute bottom-20 w-full z-10 flex items-center justify-between px-4 h-[76px]'>
+        <div className='default-btn absolute bottom-0 w-full z-10 flex items-center justify-between px-4 h-[76px]'>
           <ItemContent {...statistics} telegramUsername='You' />
         </div>
       )}
