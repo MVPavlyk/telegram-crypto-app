@@ -14,6 +14,7 @@ import { Protected } from './modules/common/hoc/protected.hoc.tsx';
 import { MutationCache, QueryClient } from '@tanstack/react-query';
 import App from './App.tsx';
 import GameSearch from './pages/GameSearch';
+import GamePage from './pages/Game';
 
 const persister = createSyncStoragePersister({
   storage: window.localStorage,
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: Routes.GAME_SEARCH,
         element: <Protected component={<GameSearch />} />,
+      },
+      {
+        path: Routes.GAME,
+        element: <Protected component={<GamePage />} />,
       },
     ],
   },

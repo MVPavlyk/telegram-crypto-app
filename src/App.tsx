@@ -13,8 +13,6 @@ export const App = () => {
     WebApp.expand();
     WebApp.setHeaderColor('#21232F');
     WebApp.setBackgroundColor('#21232F');
-
-    console.log(WebApp);
   }, []);
 
   const { setUser, setStatistics, setIsLoading } = useAppStore();
@@ -56,8 +54,6 @@ export const App = () => {
   useEffect(() => {
     handleSignIn();
   }, [telegramId]);
-
-  console.log(telegramUser, WebApp);
 
   return <Outlet />;
 };

@@ -86,22 +86,26 @@ body {
         min-height: calc(66vh - 88px) !important;
     }
 
-
-    .home-advice {
-        /*bottom: 25px !important;*/
-        /*line-height: 20px !important;*/
-        /*font-size: 14px !important;*/
-    }
-}
-
-@media screen and (min-height: 660px) {
-    /*.bg-wrapper {*/
-    /* top: -100px!important;*/
-    /*}*/
-
 }
 
 
 .history-item:last-child {
     border: none;
+}
+
+
+.stones-chess-bg {
+    width: 100%;
+    height: 100%;
+    background-size: 30px 30px;
+    background-image: linear-gradient(45deg, #BBBBBB 25%, transparent 25%,
+    transparent 75%, #BBBBBB 75%, #BBBBBB),
+    linear-gradient(45deg, #BBBBBB 25%, transparent 25%,
+            transparent 75%, #BBBBBB 75%, #BBBBBB),
+    linear-gradient(45deg, #B8B8B8 25%, transparent 25%,
+            transparent 75%, #B8B8B8 75%, #B8B8B8),
+    linear-gradient(45deg, #B8B8B8 25%, transparent 25%,
+            transparent 75%, #B8B8B8 75%, #B8B8B8);
+    background-position: 0 0, 15px 15px, 15px 0, 0 15px;
+
 }
