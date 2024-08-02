@@ -95,17 +95,5 @@ body {
 
 
 .stones-chess-bg {
-    width: 100%;
-    height: 100%;
-    background-size: 30px 30px;
-    background-image: linear-gradient(45deg, #BBBBBB 25%, transparent 25%,
-    transparent 75%, #BBBBBB 75%, #BBBBBB),
-    linear-gradient(45deg, #BBBBBB 25%, transparent 25%,
-            transparent 75%, #BBBBBB 75%, #BBBBBB),
-    linear-gradient(45deg, #B8B8B8 25%, transparent 25%,
-            transparent 75%, #B8B8B8 75%, #B8B8B8),
-    linear-gradient(45deg, #B8B8B8 25%, transparent 25%,
-            transparent 75%, #B8B8B8 75%, #B8B8B8);
-    background-position: 0 0, 15px 15px, 15px 0, 0 15px;
-
+    background-image: url("./assets/game-fields/stones/chess-bg.svg");
 }
