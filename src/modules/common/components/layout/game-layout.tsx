@@ -1,6 +1,6 @@
 import bamboo from '../../../../assets/game-fields/stones/bamboo.svg';
-import top from '../../../../assets/game-fields/stones/top.svg';
-import bottom from '../../../../assets/game-fields/stones/bottom.svg';
+import top from '../../../../assets/game-fields/stones/top.png';
+import bottom from '../../../../assets/game-fields/stones/bottom.png';
 import React from 'react';
 
 const GameLayout = ({ children }: { children: React.ReactNode }) => {
