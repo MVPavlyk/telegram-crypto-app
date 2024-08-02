@@ -19,5 +19,6 @@ module.exports = {
     ],
     'linebreak-style': 0,
     '@typescript-eslint/no-namespace': 0,
+    '@typescript-eslint/no-explicit-any': 0,
   },
 };

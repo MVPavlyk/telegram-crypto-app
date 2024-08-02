@@ -95,5 +95,36 @@ body {
 
 
 .stones-chess-bg {
-    background-image: url("./assets/game-fields/stones/Vector.svg");
+    background-image: url("assets/game-fields/stones/chess-bg.svg");
 }
+
+@keyframes button-appear {
+    0% {
+        opacity: 0;
+        width: 30%;
+        margin-left: 35%;
+        margin-top: 50%;
+    }
+    10% {
+        opacity: 1;
+        width: 30%;
+        margin-left: 35%;
+        margin-top: 50%;
+    }
+    100% {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 0;
+        opacity: 1;
+    }
+}
+
+.game-process-button {
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 50%;
+    opacity: 0;
+    animation: button-appear .3s forwards;
+    animation-delay: 1s;
+}
+
