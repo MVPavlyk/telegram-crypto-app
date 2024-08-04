@@ -1,9 +1,11 @@
 import GameField from '../../modules/game/game-field.tsx';
 import { useEffect, useState } from 'react';
 import { TGameState } from '../../modules/game/types/game.types.ts';
+import VersusScreen from '../../modules/game/components/versus-screen.component.tsx';
 
 const GamePage = () => {
   const [count, setCount] = useState(0);
+  const [countDown, setCountDown] = useState(0);
 
   const [gameState, setGameState] = useState<TGameState>('preparing');
 
@@ -36,7 +38,19 @@ const GamePage = () => {
     });
   }
 
+  function changeCountDown(num: number) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        setCountDown(num);
+        resolve(true);
+      }, 1000);
+    });
+  }
+
   const game1VS1 = async () => {
+    await changeCountDown(3);
+    await changeCountDown(2);
+    await changeCountDown(1);
     await changeGameState('ongoing');
     await setNextRound(false);
     await setNextRound(true);
@@ -52,11 +66,12 @@ const GamePage = () => {
     game1VS1();
   }, []);
 
-  useEffect(() => {
-    console.log(gameState);
-  }, [gameState]);
-
-  return <GameField gameState={gameState} isActive={isActive} round={round} count={count} setCount={setCount} />;
+  return (
+    <>
+      <VersusScreen countDown={countDown} gameState={gameState} />
+      <GameField gameState={gameState} isActive={isActive} round={round} count={count} setCount={setCount} />
+    </>
+  );
 };
 
 export default GamePage;

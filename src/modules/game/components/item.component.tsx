@@ -33,10 +33,8 @@ const GameItemComponent: React.FC<TGameItemProps> = ({
 
   useEffect(() => {
     setIsClicked(false);
-    if (gameState === 'ongoing') {
-      lottieRef?.current?.play();
-    }
-  }, [isActive, gameState]);
+    lottieRef?.current?.play();
+  }, [isActive]);
 
   return (
     <div className='w-full flex items-center justify-center relative'>
@@ -54,7 +52,7 @@ const GameItemComponent: React.FC<TGameItemProps> = ({
             className={classNames(
               'border-none bg-transparent ',
               isActive ? 'game-process-button' : 'game-process-button-inactive',
-              gameState !== 'ongoing' && 'hidden'
+              gameState === 'preparing' && 'hidden'
             )}
           >
             <img draggable={false} src={el} alt='npc' />
@@ -64,10 +62,10 @@ const GameItemComponent: React.FC<TGameItemProps> = ({
 
       <DotLottiePlayer
         ref={lottieRef}
-        autoplay={false}
         src={stone}
-        className='w-full'
-        direction={gameState !== 'ongoing' || isActive ? 1 : -1}
+        autoplay={true}
+        className={classNames('w-full')}
+        direction={isActive ? 1 : -1}
         loop={false}
       />
     </div>

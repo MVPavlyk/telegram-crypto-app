@@ -12,6 +12,18 @@ body {
     touch-action: none !important;
 }
 
+.default-bg {
+    background: url('./assets/main-bg.svg') center / cover;
+}
+
+.game-my-avatar {
+    background: url('./assets/my-game-avatar.svg') center / cover;
+}
+
+.game-opponent-avatar {
+    background: url('./assets/opponent-avatar.svg') center / cover;
+}
+
 .default-btn,
 .default-btn-disabled {
     border: none;
@@ -24,11 +36,11 @@ body {
 }
 
 .default-btn {
-    background: url('assets/default-button-bg.png') center top / cover no-repeat;
+    background: url('assets/default-button-bg.webp') center top / cover no-repeat;
 }
 
 .default-btn-disabled {
-    background: url('assets/deafult-button-disabled-bg.png') center top / cover no-repeat;
+    background: url('assets/deafult-button-disabled-bg.webp') center top / cover no-repeat;
 
 }
 
