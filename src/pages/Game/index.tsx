@@ -2,6 +2,7 @@ import GameField from '../../modules/game/game-field.tsx';
 import { useEffect, useState } from 'react';
 import { TGameState } from '../../modules/game/types/game.types.ts';
 import VersusScreen from '../../modules/game/components/versus-screen.component.tsx';
+import OneVsOneFinalScreen from '../../modules/game/components/one-vs-one-final-screen.tsx';
 
 const GamePage = () => {
   const [count, setCount] = useState(0);
@@ -73,6 +74,7 @@ const GamePage = () => {
     <>
       <VersusScreen countDown={countDown} gameState={gameState} />
       <GameField gameState={gameState} isActive={isActive} round={round} count={count} setCount={setCount} />
+      <OneVsOneFinalScreen gameState={gameState} isWin />
     </>
   );
 };

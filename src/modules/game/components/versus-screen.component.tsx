@@ -19,7 +19,7 @@ const VersusScreen: React.FC<VersusScreenProps> = ({ gameState, countDown }) => 
         gameState === 'preparing' ? 'left-0' : '-left-[100vw]'
       )}
     >
-      <div className='absolute w-[130%] -left-[12%] h-screen z-[12] flex items-center'>
+      <div className='absolute w-[130%] -left-[14%] h-screen z-[12] flex items-center'>
         <img className='w-full' src={vsFrame} alt='vs' />
       </div>
       <div className='w-screen h-screen flex items-center justify-center z-[13] text-white absolute text-[60px] font-bold'>

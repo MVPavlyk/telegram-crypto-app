@@ -68,7 +68,7 @@ export const NinjaScreen = () => {
           <Lottie style={{ marginTop: 20 }} {...progressOptions} />
         ) : (
           <div className='w-full flex flex-col items-center gap-y-4'>
-            <Link to={Routes.GAME} className='h-20 max-w-[320px] w-full text-[30px] font-[600] default-btn'>
+            <Link to={Routes.GAME_SEARCH} className='h-20 max-w-[320px] w-full text-[30px] font-[600] default-btn'>
               Start Game
             </Link>
             <p className='w-56 text-center text-xs text-[#4A4E64] sm:mt-14 sm:text-lg sm:w-80'>

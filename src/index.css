@@ -38,6 +38,9 @@ body {
 .default-btn {
     background: url('assets/default-button-bg.webp') center top / cover no-repeat;
 }
+.yellow-btn {
+    background: url('assets/deafult-button-yellow-bg.webp') center top / cover no-repeat;
+}
 
 .default-btn-disabled {
     background: url('assets/deafult-button-disabled-bg.webp') center top / cover no-repeat;
@@ -193,4 +196,21 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.spin-bg {
+    animation-name: spin;
+    animation-duration: 8000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

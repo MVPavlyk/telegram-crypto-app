@@ -1,7 +1,7 @@
 import { Switch } from '../common/components/switch/switch.tsx';
 import React, { useState } from 'react';
 import { GameMode } from '../leaderboard/constants';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Routes } from '../common/constants';
 import BackHome from '../../assets/icons/BackHome.tsx';
 import classNames from 'classnames';
@@ -10,6 +10,8 @@ import searchAnimation from '../../assets/animations/Searching.lottie';
 import numberWithCommas from '../../libs/helpers/numberWithCommas.ts';
 
 const GameSearch = () => {
+  const navigate = useNavigate();
+
   const sumCases: number[] = [10, 25, 50, 100, 250, 500, 1000, 1800, 2500, 3800, 7500, 10000];
 
   const [gameMode, setGameMode] = useState(GameMode.OneVsNine);
@@ -83,7 +85,8 @@ const GameSearch = () => {
         )}
       </div>
       <button
-        onClick={() => setIsGameSearching(!isGameSearching)}
+        onClick={() => navigate(Routes.GAME)}
+        // onClick={() => setIsGameSearching(!isGameSearching)}
         disabled={!isReadyToSearch}
         className={classNames(
           'text-2xl font-semibold w-[calc(100%-40px)] h-[66px] fixed bottom-[30px]',
