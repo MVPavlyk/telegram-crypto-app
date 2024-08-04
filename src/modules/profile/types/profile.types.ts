@@ -1,4 +1,4 @@
-import { AvatarType, User } from '../../common/types';
+import { AvatarType, IUser } from '../../common/types';
 
 export interface CreateUserPayload {
   username: string;
@@ -13,5 +13,5 @@ export type History = {
   id: string;
   win: boolean;
   mode: 2 | 10;
-  opponent?: User & { rank: number };
+  opponent?: IUser & { rank: number };
 };

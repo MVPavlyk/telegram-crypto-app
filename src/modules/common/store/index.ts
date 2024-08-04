@@ -1,12 +1,12 @@
 import { create } from 'zustand';
-import { User } from '../types';
+import { IUser } from '../types';
 import { userLeaderBoardInterface } from '../../../libs/user/interfaces';
 
 interface AppStore {
   isLoading: boolean;
   setIsLoading: (payload: boolean) => void;
-  user: User | null;
-  setUser: (payload: User | null) => void;
+  user: IUser | null;
+  setUser: (payload: IUser | null) => void;
   statistics: userLeaderBoardInterface | null;
   setStatistics: (payload: userLeaderBoardInterface | null) => void;
 }

@@ -2,8 +2,16 @@ import bamboo from '../../../../assets/game-fields/stones/bamboo.svg';
 import top from '../../../../assets/game-fields/stones/top.png';
 import bottom from '../../../../assets/game-fields/stones/bottom.png';
 import React from 'react';
+import { TUserScore } from '../../../game/types/game.types.ts';
+import UserScoreComponent from '../../../game/components/user-score.component.tsx';
 
-const GameLayout = ({ children }: { children: React.ReactNode }) => {
+export type GameLayoutProps = {
+  myScore?: TUserScore;
+  opponentScore?: TUserScore;
+  children: React.ReactNode;
+};
+
+const GameLayout: React.FC<GameLayoutProps> = ({ children, myScore, opponentScore }) => {
   return (
     <section className='h-screen w-screen relative'>
       <div className='stones-chess-bg absolute top-0 left-0 w-full h-full z-[1]'></div>
@@ -13,6 +21,8 @@ const GameLayout = ({ children }: { children: React.ReactNode }) => {
       <div className='absolute top-0 left-0 w-full h-full z-[4] flex items-center justify-center'>
         <div className='h-[113vw] w-[81.3vw] grid grid-cols-3 grid-rows-4 gap-[5.2vw]'>{children}</div>
       </div>
+      {myScore && <UserScoreComponent className='bottom-6 right-7' {...myScore} />}
+      {opponentScore && <UserScoreComponent className='top-6 left-7' {...opponentScore} />}
     </section>
   );
 };

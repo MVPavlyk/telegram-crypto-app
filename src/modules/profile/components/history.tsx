@@ -1,12 +1,12 @@
 import WinIcon from '../../../assets/icons/WinIcon.tsx';
 import LoseIcon from '../../../assets/icons/LoseIcon.tsx';
 import { Avatar } from '../../common/components/avatar/avatar.tsx';
-import { AvatarType, User } from '../../common/types';
+import { AvatarType, IUser } from '../../common/types';
 
 interface Props {
   userAvatar: AvatarType;
   win: boolean;
-  opponent?: User | undefined;
+  opponent?: IUser | undefined;
 }
 
 export const GamesHistory = ({ userAvatar, win, opponent }: Props) => {

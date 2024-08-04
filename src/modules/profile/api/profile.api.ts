@@ -2,7 +2,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { axiosInstance } from '../../common/api/axios.api';
 import { CreateUserPayload, UpdateUserPayload } from '../types/profile.types';
 import { AxiosError, AxiosResponse } from 'axios';
-import { User } from '../../common/types';
+import { IUser } from '../../common/types';
 
 export namespace ProfileApi {
   const ENDPOINT = 'user';
@@ -18,5 +18,5 @@ export namespace ProfileApi {
     useMutation<AxiosResponse, AxiosError, CreateUserPayload>({ mutationFn: (data) => createOne(data) });
 
   export const useUpdateOne = () =>
-    useMutation<User, AxiosError, UpdateUserPayload>({ mutationFn: (data) => updateOne(data) });
+    useMutation<IUser, AxiosError, UpdateUserPayload>({ mutationFn: (data) => updateOne(data) });
 }
