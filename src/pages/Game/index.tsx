@@ -29,12 +29,15 @@ const GamePage = () => {
     });
   }
 
-  function changeGameState(state: TGameState) {
+  function changeGameState(state: TGameState, withTimeout?: boolean) {
     return new Promise((resolve) => {
-      setTimeout(() => {
-        setGameState(state);
-        resolve(true);
-      }, 3000);
+      setTimeout(
+        () => {
+          setGameState(state);
+          resolve(true);
+        },
+        withTimeout ? 3000 : 1000
+      );
     });
   }
 
@@ -59,7 +62,7 @@ const GamePage = () => {
     await setNextRound(true);
     await setNextRound(true);
     await setNextRound(true);
-    await changeGameState('finished');
+    await changeGameState('finished', true);
   };
 
   useEffect(() => {
