@@ -9,9 +9,10 @@ export type GameLayoutProps = {
   myScore?: TUserScore;
   opponentScore?: TUserScore;
   children: React.ReactNode;
+  round: number;
 };
 
-const GameLayout: React.FC<GameLayoutProps> = ({ children, myScore, opponentScore }) => {
+const GameLayout: React.FC<GameLayoutProps> = ({ children, myScore, opponentScore, round }) => {
   return (
     <section className='h-screen w-screen relative'>
       <div className='stones-chess-bg absolute top-0 left-0 w-full h-full z-[1]'></div>
@@ -23,6 +24,7 @@ const GameLayout: React.FC<GameLayoutProps> = ({ children, myScore, opponentScor
       </div>
       {myScore && <UserScoreComponent className='bottom-6 right-7' {...myScore} />}
       {opponentScore && <UserScoreComponent className='top-6 left-7' {...opponentScore} />}
+      <div className='absolute top-6 right-0 round-table z-[5]'>Round {round}</div>
     </section>
   );
 };

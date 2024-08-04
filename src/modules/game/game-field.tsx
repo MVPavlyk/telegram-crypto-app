@@ -25,9 +25,10 @@ import { useAppStore } from '../common/store';
 type TGameItemProps = {
   count: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
+  round: number;
 };
 
-const GameField: React.FC<TGameItemProps> = ({ count, setCount }) => {
+const GameField: React.FC<TGameItemProps> = ({ count, setCount, round }) => {
   const { user } = useAppStore((state) => ({ ...state, user: state.user!, statistics: state.statistics! }));
 
   const [isClickEnabled, setIsClickEnabled] = useState(false);
@@ -35,6 +36,8 @@ const GameField: React.FC<TGameItemProps> = ({ count, setCount }) => {
   const [gameButtonsArray, setGameButtonsArray] = useState<TGameButton[]>([]);
 
   useEffect(() => {
+    setIsClickEnabled(false);
+
     const bombs = [bomb1, bomb2, bomb3, bomb4, bomb5, bomb6];
     const npcs = [npc1, npc2, npc3, npc4, npc5, npc6, npc7, npc8];
 
@@ -49,17 +52,17 @@ const GameField: React.FC<TGameItemProps> = ({ count, setCount }) => {
     ]);
 
     setGameButtonsArray(result);
-  }, []);
+  }, [round]);
 
   return (
-    <GameLayout myScore={{ user, score: count }}>
+    <GameLayout myScore={{ user, score: count }} round={round}>
       {gameButtonsArray.map((item, index) => (
         <GameItemComponent
           setCount={setCount}
           item={item}
           setIsClickEnabled={setIsClickEnabled}
           isClickEnabled={isClickEnabled}
-          key={index}
+          key={`${round}-${index}`}
         />
       ))}
     </GameLayout>

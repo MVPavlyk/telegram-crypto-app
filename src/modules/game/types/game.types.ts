@@ -9,3 +9,5 @@ export type TUserScore = {
   user: IUser;
   score: number;
 };
+
+export type TGameState = 'preparing' | 'ongoing' | 'finished';
