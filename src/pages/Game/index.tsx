@@ -9,14 +9,20 @@ const GamePage = () => {
 
   const [round, setRound] = useState(0);
 
+  const [isActive, setIsActive] = useState(false);
+
   function setNextRound(isTimeout: boolean) {
     return new Promise((resolve) => {
+      setTimeout(() => {
+        setIsActive(false);
+      }, 3000);
       setTimeout(
         () => {
           setRound((r) => r + 1);
+          setIsActive(true);
           resolve(true);
         },
-        isTimeout ? 2200 : 0
+        isTimeout ? 4500 : 0
       );
     });
   }
@@ -26,7 +32,7 @@ const GamePage = () => {
       setTimeout(() => {
         setGameState(state);
         resolve(true);
-      }, 0);
+      }, 3000);
     });
   }
 
@@ -46,7 +52,11 @@ const GamePage = () => {
     game1VS1();
   }, []);
 
-  return <GameField round={round} count={count} setCount={setCount} />;
+  useEffect(() => {
+    console.log(gameState);
+  }, [gameState]);
+
+  return <GameField gameState={gameState} isActive={isActive} round={round} count={count} setCount={setCount} />;
 };
 
 export default GamePage;
