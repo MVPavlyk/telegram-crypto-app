@@ -15,7 +15,7 @@ const VersusScreen: React.FC<VersusScreenProps> = ({ gameState, countDown }) => 
   return (
     <section
       className={classNames(
-        'w-screen h-screen absolute z-10 transition-all duration-200 top-0 default-bg overflow-hidden',
+        'w-full h-full absolute z-10 transition-all duration-200 top-0 default-bg overflow-hidden',
         gameState === 'preparing' ? 'left-0' : '-left-[100vw]'
       )}
     >

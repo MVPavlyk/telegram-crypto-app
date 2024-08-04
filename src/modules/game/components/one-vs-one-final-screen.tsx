@@ -21,14 +21,10 @@ const OneVsOneFinalScreen: React.FC<OneVsOneFinalScreenProps> = ({ gameState, is
   return (
     <div
       className={classNames(
-        'absolute h-screen w-screen top-0 transition-all duration-200 z-10 overflow-hidden',
-        gameState === 'finished' ? 'left-0' : 'left-[100vw]'
+        'w-full h-full absolute z-10 transition-all duration-200 top-0 default-bg-red overflow-hidden',
+        gameState === 'finished' ? 'right-0' : 'right-[100vw]'
       )}
     >
-      <div className='absolute -top-[25vh] -left-[calc((150vh-100vw)/2)] h-[150vh] w-[150vh]  bg-red-400'>
-        <img src={winSpin} alt='win-spin' className='h-full w-full ' />
-      </div>
-
       <div className='absolute top-0 left-0 h-screen w-screen z-[15] flex items-center flex-col justify-between py-9'>
         <div className='flex items-center flex-col justify-center gap-y-3'>
           <img src={crownBig} alt='crown' className='h-20' />

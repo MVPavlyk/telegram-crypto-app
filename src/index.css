@@ -4,7 +4,7 @@
 
 body {
     font-family: 'Changa', sans-serif;
-
+    overflow: hidden;
     background: url('./assets/main-bg.svg') center / cover;
 }
 
@@ -14,6 +14,9 @@ body {
 
 .default-bg {
     background: url('./assets/main-bg.svg') center / cover;
+}
+.default-bg-red {
+    background: url('./assets/main-bg-red.svg') center / cover;
 }
 
 .game-my-avatar {

@@ -71,11 +71,11 @@ const GamePage = () => {
   }, []);
 
   return (
-    <>
+    <section className='max-h-screen h-screen w-screen max-w-[100vw] overflow-hidden'>
       <VersusScreen countDown={countDown} gameState={gameState} />
       <GameField gameState={gameState} isActive={isActive} round={round} count={count} setCount={setCount} />
       <OneVsOneFinalScreen gameState={gameState} isWin />
-    </>
+    </section>
   );
 };
 
