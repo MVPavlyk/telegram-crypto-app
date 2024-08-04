@@ -187,3 +187,10 @@ body {
     padding: 6px 10px;
     backdrop-filter: blur(6px);
 }
+
+.game-preparing-username-color {
+    background: linear-gradient(180deg, #FF9E0D 0%, #FE5802 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
