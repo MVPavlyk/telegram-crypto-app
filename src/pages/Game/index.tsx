@@ -16,7 +16,7 @@ const GamePage = () => {
           setRound((r) => r + 1);
           resolve(true);
         },
-        isTimeout ? 3000 : 0
+        isTimeout ? 2200 : 0
       );
     });
   }
