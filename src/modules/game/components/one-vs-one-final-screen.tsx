@@ -1,7 +1,6 @@
 import { TGameState } from '../types/game.types.ts';
 import React from 'react';
 import classNames from 'classnames';
-import winSpin from '../../../assets/win-spin-bg.png';
 import { useAppStore } from '../../common/store';
 import crownBig from '../../../assets/crown-big.svg';
 import { Avatar } from '../../common/components/avatar/avatar.tsx';

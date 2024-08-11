@@ -11,6 +11,7 @@ import { Avatar } from '../common/components/avatar/avatar.tsx';
 import { Switch } from '../common/components/switch/switch.tsx';
 import { useAppStore } from '../common/store';
 import HistoryList from './components/history.list.component.tsx';
+import { TonConnectButton } from '@tonconnect/ui-react';
 
 export const Wallet = () => {
   const { user, statistics } = useAppStore((state) => ({ ...state, user: state.user!, statistics: state.statistics! }));
@@ -30,9 +31,11 @@ export const Wallet = () => {
               <h6 className='text-sm font-normal text-white'>#{statistics.rank} at Leaderboard</h6>
             </div>
           </div>
-          <button className='default-btn gap-x-2.5 h-10 px-4 font-semibold'>
+          <TonConnectButton />
+
+          {/*<button className='default-btn gap-x-2.5 h-10 px-4 font-semibold'>
             Open <WalletOpenIcon />
-          </button>
+          </button>*/}
         </div>
         <div className='my-8 w-full text-center text-main-orange text-[64px] font-bold'>{statistics.sumWon} $</div>
         <div className='flex items-center justify-between py-2.5 border-b border-[#292C3D]'>

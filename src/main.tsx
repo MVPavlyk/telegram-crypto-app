@@ -15,10 +15,14 @@ import { MutationCache, QueryClient } from '@tanstack/react-query';
 import App from './App.tsx';
 import GameSearch from './pages/GameSearch';
 import GamePage from './pages/Game';
+import { TonConnectUIProvider } from '@tonconnect/ui-react';
 
 const persister = createSyncStoragePersister({
   storage: window.localStorage,
 });
+
+const manifestUrl =
+  'https://raw.githubusercontent.com/ton-community/tutorials/main/03-client/test/public/tonconnect-manifest.json';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -73,7 +77,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <PersistQueryClientProvider client={queryClient} persistOptions={{ persister }}>
-    <RouterProvider router={router} />
-  </PersistQueryClientProvider>
+  <TonConnectUIProvider manifestUrl={manifestUrl}>
+    <PersistQueryClientProvider client={queryClient} persistOptions={{ persister }}>
+      <RouterProvider router={router} />
+    </PersistQueryClientProvider>
+  </TonConnectUIProvider>
 );

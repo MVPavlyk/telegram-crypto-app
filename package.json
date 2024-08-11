@@ -15,10 +15,14 @@
   },
   "dependencies": {
     "@dotlottie/react-player": "^1.6.19",
+    "@orbs-network/ton-access": "^2.3.3",
     "@tanstack/query-sync-storage-persister": "^5.51.9",
     "@tanstack/react-query": "^5.51.9",
     "@tanstack/react-query-persist-client": "^5.51.9",
-    "@tonconnect/ui-react": "^2.0.6",
+    "@ton/core": "^0.56.3",
+    "@ton/crypto": "^3.3.0",
+    "@ton/ton": "^14.0.0",
+    "@tonconnect/ui-react": "^2.0.8",
     "@twa-dev/sdk": "^7.0.0",
     "@vitejs/plugin-basic-ssl": "^1.0.1",
     "axios": "^1.7.2",
@@ -31,6 +35,7 @@
     "ton": "^13.9.0",
     "ton-core": "^0.53.0",
     "ton-crypto": "^3.2.0",
+    "vite-plugin-node-polyfills": "^0.22.0",
     "zustand": "^4.5.4"
   },
   "devDependencies": {
