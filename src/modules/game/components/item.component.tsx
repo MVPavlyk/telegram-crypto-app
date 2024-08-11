@@ -1,8 +1,10 @@
 import { DotLottiePlayer } from '@dotlottie/react-player';
-import stone from '../../../assets/game-fields/stones/field.lottie';
+import stone_field from '../../../assets/game-fields/stones/field.lottie';
+import ice_field from '../../../assets/game-fields/ice/field.lottie';
+import forest_field from '../../../assets/game-fields/forest/field.lottie';
 import plusOne from '../../../assets/animations/+1.lottie';
 import minusOne from '../../../assets/animations/-1.lottie';
-import { TGameButton, TGameState } from '../types/game.types.ts';
+import { TGameButton, TGameLocation, TGameState } from '../types/game.types.ts';
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 
@@ -13,6 +15,7 @@ type TGameItemProps = {
   setCount: React.Dispatch<React.SetStateAction<number>>;
   isActive: boolean;
   gameState: TGameState;
+  gameLocation: TGameLocation;
 };
 
 const GameItemComponent: React.FC<TGameItemProps> = ({
@@ -22,7 +25,22 @@ const GameItemComponent: React.FC<TGameItemProps> = ({
   isClickEnabled,
   setIsClickEnabled,
   gameState,
+  gameLocation,
 }) => {
+  let field: string | undefined;
+
+  switch (gameLocation) {
+    case 'stone':
+      field = stone_field;
+      break;
+    case 'forest':
+      field = forest_field;
+      break;
+    default:
+      field = ice_field;
+      break;
+  }
+
   const lottieRef = useRef<any>();
 
   const { el, action } = item;
@@ -35,6 +53,8 @@ const GameItemComponent: React.FC<TGameItemProps> = ({
     setIsClicked(false);
     lottieRef?.current?.play();
   }, [isActive]);
+
+  if (!field) return null;
 
   return (
     <div className='w-full flex items-center justify-center relative'>
@@ -62,7 +82,7 @@ const GameItemComponent: React.FC<TGameItemProps> = ({
 
       <DotLottiePlayer
         ref={lottieRef}
-        src={stone}
+        src={field}
         autoplay={true}
         className={classNames('w-full')}
         direction={isActive ? 1 : -1}

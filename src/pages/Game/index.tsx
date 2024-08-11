@@ -1,6 +1,6 @@
 import GameField from '../../modules/game/game-field.tsx';
 import { useEffect, useState } from 'react';
-import { TGameState } from '../../modules/game/types/game.types.ts';
+import { TGameLocation, TGameState } from '../../modules/game/types/game.types.ts';
 import VersusScreen from '../../modules/game/components/versus-screen.component.tsx';
 import OneVsOneFinalScreen from '../../modules/game/components/one-vs-one-final-screen.tsx';
 
@@ -9,6 +9,7 @@ const GamePage = () => {
   const [countDown, setCountDown] = useState(0);
 
   const [gameState, setGameState] = useState<TGameState>('preparing');
+  const [gameLocation, setGameLocation] = useState<TGameLocation>('stone');
 
   const [round, setRound] = useState(0);
 
@@ -68,12 +69,24 @@ const GamePage = () => {
 
   useEffect(() => {
     game1VS1();
+
+    const possibleGameLocations: TGameLocation[] = ['stone', 'forest', 'ice'];
+    const locationIndex = Math.floor(Math.random() * possibleGameLocations.length);
+
+    setGameLocation(possibleGameLocations[locationIndex]);
   }, []);
 
   return (
     <section className='max-h-screen h-screen w-screen max-w-[100vw] overflow-hidden'>
       <VersusScreen countDown={countDown} gameState={gameState} />
-      <GameField gameState={gameState} isActive={isActive} round={round} count={count} setCount={setCount} />
+      <GameField
+        gameLocation={gameLocation}
+        gameState={gameState}
+        isActive={isActive}
+        round={round}
+        count={count}
+        setCount={setCount}
+      />
       <OneVsOneFinalScreen gameState={gameState} isWin />
     </section>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { TGameState } from '../types/game.types.ts';
 import classNames from 'classnames';
-import vsFrame from '../../../assets/vs-frame.png';
+import vsFrame from '../../../assets/vs-frame.svg';
 import { useAppStore } from '../../common/store';
 
 export type VersusScreenProps = {

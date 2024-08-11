@@ -5,7 +5,6 @@ import TonWhite from '../../assets/icons/TonWhite.tsx';
 
 import UsdtImage from '../../assets/usdt.svg';
 import TonImage from '../../assets/ton.svg';
-import WalletOpenIcon from '../../assets/icons/WalletOpenIcon.tsx';
 
 import { Avatar } from '../common/components/avatar/avatar.tsx';
 import { Switch } from '../common/components/switch/switch.tsx';

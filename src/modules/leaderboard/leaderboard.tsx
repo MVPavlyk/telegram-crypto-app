@@ -23,6 +23,15 @@ export const Leaderboard = () => {
   const { data, isLoading, refetch } = LeaderboardApi.useGetMany({ queryObject });
 
   useEffect(() => {
+    setPage(1);
+    setItems([]);
+  }, []);
+
+  useEffect(() => {
+    console.log(items);
+  }, [items]);
+
+  useEffect(() => {
     refetch();
   }, [queryObject]);
 

@@ -15,6 +15,7 @@ body {
 .default-bg {
     background: url('./assets/main-bg.svg') center / cover;
 }
+
 .default-bg-red {
     background: url('./assets/main-bg-red.svg') center / cover;
 }
@@ -41,6 +42,7 @@ body {
 .default-btn {
     background: url('assets/default-button-bg.webp') center top / cover no-repeat;
 }
+
 .yellow-btn {
     background: url('assets/deafult-button-yellow-bg.webp') center top / cover no-repeat;
 }
@@ -114,6 +116,14 @@ body {
 
 .stones-chess-bg {
     background-image: url("assets/game-fields/stones/chess-bg.svg");
+}
+
+.forest-chess-bg {
+    background-image: url("assets/game-fields/forest/chess-bg.svg");
+}
+
+.ice-chess-bg {
+    background-image: url("assets/game-fields/ice/chess-bg.svg");
 }
 
 @keyframes button-appear {

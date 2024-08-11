@@ -11,3 +11,5 @@ export type TUserScore = {
 };
 
 export type TGameState = 'preparing' | 'ongoing' | 'finished';
+
+export type TGameLocation = 'stone' | 'forest' | 'ice';

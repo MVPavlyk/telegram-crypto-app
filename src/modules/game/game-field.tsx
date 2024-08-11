@@ -18,7 +18,7 @@ import bomb5 from '../../assets/bombs/bomb-5.svg';
 import bomb6 from '../../assets/bombs/bomb-6.svg';
 import getRandomElements from '../../libs/helpers/getRandomElements.ts';
 import shuffleArray from '../../libs/helpers/shuffleArray.ts';
-import { TGameButton, TGameState } from './types/game.types.ts';
+import { TGameButton, TGameLocation, TGameState } from './types/game.types.ts';
 import GameItemComponent from './components/item.component.tsx';
 import { useAppStore } from '../common/store';
 
@@ -28,9 +28,10 @@ type TGameItemProps = {
   round: number;
   isActive: boolean;
   gameState: TGameState;
+  gameLocation: TGameLocation;
 };
 
-const GameField: React.FC<TGameItemProps> = ({ count, isActive, setCount, gameState, round }) => {
+const GameField: React.FC<TGameItemProps> = ({ count, isActive, gameLocation, setCount, gameState, round }) => {
   const { user } = useAppStore((state) => ({ ...state, user: state.user!, statistics: state.statistics! }));
 
   const [isClickEnabled, setIsClickEnabled] = useState(false);
@@ -57,9 +58,10 @@ const GameField: React.FC<TGameItemProps> = ({ count, isActive, setCount, gameSt
   }, [round]);
 
   return (
-    <GameLayout myScore={{ user, score: count }} round={round}>
+    <GameLayout gameLocation={gameLocation} myScore={{ user, score: count }} round={round}>
       {gameButtonsArray.map((item, index) => (
         <GameItemComponent
+          gameLocation={gameLocation}
           setCount={setCount}
           item={item}
           isActive={isActive}
